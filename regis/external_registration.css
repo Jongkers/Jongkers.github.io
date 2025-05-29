@@ -1,60 +1,22 @@
+body {
+  background: url("/image/FEU.png") no-repeat center fixed;
+  background-size: cover;
+  font-family: Arial, sans-serif;
+  margin: 0;
+}
 
-        body {
-          background: url("/image/FEU.png") no-repeat center fixed;
-          background-size: cover;
-          font-family: Arial, sans-serif;
-          display: flex;
-          justify-content: center;
-          align-items: center;
-          height: 150vh;
-          margin: 0;
-        }
-    
-        .container {
-          background-color: white;
-          border-radius: 8px;
-          box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
-          text-align: center;
-          width: 400px;
-          padding: 40px 30px ;
-          position: fixed;
-        }
-    
-        .title {
-          font-size: 24px;
-          font-weight: bold;
-          color: #006400;
-        }
-    
-        .subtitle {
-          font-size: 14px;
-          margin-top: 10px;
-          color: #333;
-        }
-    
-        .start-btn {
-          margin-top: 20px;
-          padding: 10px 30px;
-          background-color: #006400;
-          color: white;
-          border: none;
-          border-radius: 8px;
-          font-size: 16px;
-          cursor: pointer;
-        }
-    
-        .start-btn:hover {
-          background-color: #004d00;
-        }
-    
-        .highlight-bar {
-          position: absolute;
-          top: 0;
-          left: 0;
-          right: 0;
-          background-color: #ffcc00;
-          color: #000000;
-          font-size: 14px;
-          padding: 6px;
-          font-weight: bold;
-        }
+.highlight-bar {
+  background-color: #ffcc00;
+  color: #000;
+  font-size: 14px;
+  padding: 6px;
+  font-weight: bold;
+  margin: -1.5rem -1.5rem 1rem -1.5rem;
+  border-top-left-radius: 0.75rem;
+  border-top-right-radius: 0.75rem;
+}
+
+.card input:focus {
+  box-shadow: 0 0 0 0.2rem rgba(0, 100, 0, 0.25);
+  border-color: #006400;
+}
