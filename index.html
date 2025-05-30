@@ -3,61 +3,70 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Simple Form</title>
+    <title>Profile Page</title>
     <style>
-        
-        ul {
+        body {
+            font-family: Arial, sans-serif;
+        }
+        .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            padding: 20px;
+        }
+        .profile-info {
+            max-width: 60%;
+        }
+        .profile-info img {
+            width: 200px;
+            height: 200px;
+            background-color: #ccc;
+            display: block;
+            margin-bottom: 20px;
+        }
+        .profile-info h1 {
+            font-size: 24px;
+            margin-bottom: 10px;
+        }
+        .profile-info p {
+            margin: 5px 0;
+        }
+        .categories {
+            max-width: 30%;
+        }
+        .categories h2 {
+            font-size: 18px;
+            margin-bottom: 10px;
+        }
+        .categories ul {
             list-style-type: none;
             padding: 0;
         }
-        li {
-            margin-bottom: 10px;
-        }
-        label {
-            display: block;
-            margin-bottom: 3px;
-        }
-        input[type="text"],
-        input[type="email"],
-        textarea {
-            width: 50%;
-            padding: px;
-            box-sizing: border-box; 
-            border-radius: 5px;
-        }
-        textarea {
-            height: 80px;
+        .categories ul li {
+            margin: 5px 0;
         }
     </style>
 </head>
 <body>
-
-    <form name="Login Form" action="login.php">
-        <ul>
-            <li>
-                <label for="name">Your Name*</label>
-                <input type="text" id="name" name="user_name" required>
-            </li>
-            <li>
-                <label for="email">Email*</label>
-                <input type="email" id="email" name="user_email" required>
-            </li>
-            <li>
-                <label for="contact_no">Contact No.*</label>
-                <input type="text" id="contact_no" name="user_contact" required> <!-- Kept as text, could be type="tel" -->
-            </li>
-            <li>
-                <label for="message">Message</label>
-                <textarea id="message" name="user_message" rows="4"></textarea>
-            </li>
-            <li>
-                <small>required field*</small>
-            </li>
-            <li>
-                <button type="submit">Send</button>
-            </li>
-        </ul>
-    </form>
-
+    <div class="container">
+        <div class="profile-info">
+            <img src="#" alt="Profile Image">
+            <h1>Profile Name</h1>
+            <p>245 Blackfriars Road</p>
+            <p>Ludgate House</p>
+            <p>London, SE1 9UY</p>
+            <p>Email: <a href="mailto:firstname@surname.com">firstname@surname.com</a></p>
+            <p>Telephone: 0207 955 3705</p>
+        </div>
+        <div class="categories">
+            <h2>Categories</h2>
+            <ul>
+                <li>Lorem ipsum</li>
+                <li>dolor sit</li>
+                <li>amet</li>
+                <li>dolor sit</li>
+            </ul>
+        </div>
+    </div>
 </body>
 </html>
