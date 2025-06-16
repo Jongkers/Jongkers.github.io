@@ -1,0 +1,20 @@
+
+.container {
+    text-align: center;
+    margin: 2%;
+    border: 2px solid black;
+    border-radius: 6px;
+    background-color: rgba(100, 66, 3, 0.548);
+}
+
+.container img {
+    width: 18%;
+    margin-top: 8px;
+    border-radius: 50px;
+}
+
+.bg {
+    background-image: url(/image/missing.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+}
