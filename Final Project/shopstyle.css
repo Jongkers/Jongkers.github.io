@@ -1,0 +1,93 @@
+body {
+  font-family: 'Segoe UI', sans-serif;
+  background-color: #f9f9f9;
+  margin: 0;
+  padding: 0;
+}
+
+header {
+  background-color: #2a75bb;
+  padding: 1rem;
+  color: white;
+  text-align: center;
+}
+
+.logo {
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+.main-nav ul {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  gap: 1.5rem;
+  margin-top: 0.5rem;
+}
+
+.main-nav a {
+  color: white;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.main-nav a.active-tab {
+  border-bottom: 2px solid #ffcb05;
+}
+
+.sub-tabs {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  background: #eaeaea;
+  padding: 1rem;
+}
+
+.sub-tabs button {
+  background: white;
+  border: 1px solid #ccc;
+  border-radius: 20px;
+  padding: 10px 20px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.products {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1.5rem;
+  padding: 2rem;
+}
+
+.product-card {
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  padding: 1rem;
+  width: 200px;
+  text-align: center;
+}
+
+.product-card img {
+  width: 100%;
+  height: auto;
+  margin-bottom: 1rem;
+}
+
+.category {
+  display: none;
+}
+
+.category.active {
+  display: block;
+}
+
+footer {
+  background-color: #2a75bb;
+  color: white;
+  text-align: center;
+  padding: 1rem;
+  margin-top: 2rem;
+}

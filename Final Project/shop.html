@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Pokémon GO Shop</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header>
+    <div class="logo">Pokémon GO Shop</div>
+    <nav class="main-nav">
+      <ul>
+        <li><a href="#" class="active-tab" onclick="switchTab('shop')">Shop</a></li>
+        <li><a href="#">News</a></li>
+        <li><a href="#">Events</a></li>
+        <li><a href="#">Support</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <div class="sub-tabs">
+    <button onclick="showCategory('coins')">PokéCoins</button>
+    <button onclick="showCategory('bundles')">Bundles</button>
+    <button onclick="showCategory('tickets')">Tickets</button>
+    <button onclick="showCategory('items')">Items</button>
+  </div>
+
+  <main>
+    <section id="coins" class="category active">
+      <h2>PokéCoins</h2>
+      <div class="products">
+        <div class="product-card">
+          <img src="https://store.pokemongo.com/_next/image?url=%2Fimages%2Fcoins650.png&w=1920&q=75" alt="650 Coins">
+          <h3>650 PokéCoins</h3>
+          <p>₱249.00</p>
+        </div>
+        <div class="product-card">
+          <img src="https://store.pokemongo.com/_next/image?url=%2Fimages%2Fcoins1200.png&w=1920&q=75" alt="1200 Coins">
+          <h3>1200 PokéCoins</h3>
+          <p>₱479.00</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="bundles" class="category">
+      <h2>Bundles</h2>
+      <div class="products">
+        <div class="product-card">
+          <img src="https://via.placeholder.com/150x150.png?text=Bundle+1" alt="Bundle 1">
+          <h3>Starter Bundle</h3>
+          <p>₱199.00</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="tickets" class="category">
+      <h2>Tickets</h2>
+      <div class="products">
+        <div class="product-card">
+          <img src="https://via.placeholder.com/150x150.png?text=Ticket" alt="Ticket">
+          <h3>Event Ticket</h3>
+          <p>₱99.00</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="items" class="category">
+      <h2>Items</h2>
+      <div class="products">
+        <div class="product-card">
+          <img src="https://via.placeholder.com/150x150.png?text=Item" alt="Item">
+          <h3>Lucky Egg Pack</h3>
+          <p>₱149.00</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <p>© 2025 Pokémon. All rights reserved.</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
