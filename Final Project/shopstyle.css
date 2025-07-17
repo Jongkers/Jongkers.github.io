@@ -1,6 +1,3 @@
-/* === START OF COMBINED STYLE === */
-
-/* === style.css (First block) === */
 * {
   margin: 0;
   padding: 0;
@@ -10,7 +7,7 @@
 
 body {
   background: linear-gradient(to bottom, #0d0d0d, #1a1a1a);
-  color: #fff;
+  color: #ffffff;
   overflow-x: hidden;
 }
 
@@ -163,15 +160,14 @@ body {
 }
 
 .product-card {
-  background: #2a2a2a;
-  border: 2px solid #ffcc00;
-  border-radius: 12px;
-  padding: 2rem;
+  background: #1b1b1b;
+  color: #000000;
+  border: 1px solid #444;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  padding: 10px;
+  border-radius: 10px;
+  transition: transform 0.3s;
   text-align: center;
-  width: 220px;
-  font-weight: bold;
-  box-shadow: 0 0 10px rgba(255, 204, 0, 0.3);
-  transition: transform 0.3s ease;
 }
 
 .product-card:hover {
@@ -231,23 +227,23 @@ body {
 }
 
 #home {
-  background: url('Post\ Malone\ Lights\ GIF\ by\ Pokémon.gif') no-repeat center center / cover;
+  background: url('/image/Post\ Malone\ Lights\ GIF\ by\ Pokémon.gif') no-repeat center center / cover;
 }
 
 #login {
-  background: url('Post\ Malone\ GIF\ by\ Pokémon.gif') no-repeat center center / cover;
+  background: url('/image/Post\ Malone\ GIF\ by\ Pokémon.gif') no-repeat center center / cover;
 }
 
 #register {
-  background: url('Kick\ Bea\ GIF\ by\ Pokémon.gif') no-repeat center center / cover;
+  background: url('/image/Kick\ Bea\ GIF\ by\ Pokémon.gif') no-repeat center center / cover;
 }
 
 #about {
-  background: url('Animated\ GIF.gif') no-repeat center center / cover;
+  background: url('/image/Animated\ GIF.gif') no-repeat center center / cover;
 }
 
-#products {
-  background: url('Pokemon\ Anime\ Badges\ GIF\ by\ Pokémon.gif') no-repeat center center / cover;
+#shop {
+  background: url('/image/Pokemon\ Anime\ Badges\ GIF\ by\ Pokémon.gif') no-repeat center center / cover;
 }
 
 #login .form,
@@ -262,7 +258,7 @@ body {
   margin-bottom: 0.5rem;
 }
 
-/* === Second style.css block === */
+
 body {
   font-family: 'Segoe UI', sans-serif;
   background-color: #f9f9f9;
@@ -271,7 +267,6 @@ body {
 }
 
 header {
-  background-color: #2a75bb;
   padding: 1rem;
   color: white;
   text-align: center;
@@ -366,7 +361,6 @@ header {
   display: flex;
   justify-content: center;
   gap: 1rem;
-  background: #eaeaea;
   padding: 1rem;
   flex-wrap: wrap;
 }
@@ -408,14 +402,18 @@ header {
   justify-content: center;
   gap: 1.5rem;
   padding: 2rem;
+  max-width: 1000px;
+  width: 100%;
+  box-sizing: border-box;
 }
 
 .product-card {
-  background: white;
+  background: rgb(255, 255, 255);
   border-radius: 12px;
   box-shadow: 0 4px 10px rgba(0,0,0,0.1);
   padding: 1rem;
-  width: 200px;
+  width: 150px;
+  margin: 1rem;
   text-align: center;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
@@ -426,7 +424,7 @@ header {
 }
 
 .product-card img {
-  width: 100%;
+  width: 80%;
   height: auto;
   margin-bottom: 1rem;
 }
@@ -456,10 +454,11 @@ header {
 }
 
 #cart-panel {
-  background: #fff;
-  padding: 1rem;
+  background: #ffffff;
+  color: black;
+  padding: 2rem;
   margin: 1rem auto;
-  width: 80%;
+  width: 85%;
   box-shadow: 0 4px 10px rgba(0,0,0,0.1);
   border-radius: 12px;
 }
@@ -486,6 +485,7 @@ footer {
 
 #item-modal .modal-content {
   background: white;
+  color: #000;
   padding: 2rem;
   border-radius: 12px;
   max-width: 400px;
@@ -516,4 +516,26 @@ footer {
   to {transform: scale(1);}
 }
 
-/* === END OF COMBINED STYLE === */
+@media (max-width: 600px) {
+  .product-card {
+    width: 80%;
+    max-width: 50%;
+  }
+
+  .products {
+    justify-content: center;
+    padding: 1rem;
+  }
+}
+
+@media (min-width: 601px) and (max-width: 1024px) {
+  .product-card {
+    width: 100px;
+  }
+}
+
+@media (min-width: 1025px) {
+  .product-card {
+    width: 150px;
+  }
+}
