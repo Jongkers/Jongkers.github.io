@@ -1,3 +1,4 @@
+
 body {
   font-family: 'Segoe UI', sans-serif;
   background-color: #f9f9f9;
@@ -15,7 +16,7 @@ header {
 .logo {
   font-size: 1.5rem;
   font-weight: bold;
-  text-align: left;
+  text-align: center;
 }
 
 .main-nav ul {
@@ -77,6 +78,16 @@ header {
   margin-bottom: 1rem;
 }
 
+.product-card button {
+  margin-top: 0.5rem;
+  background: #2a75bb;
+  color: white;
+  border: none;
+  padding: 8px 15px;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
 .category {
   display: none;
 }
@@ -84,6 +95,15 @@ header {
 .category.active {
   display: block;
   padding-left: 15px;
+}
+
+#cart-panel {
+  background: #fff;
+  padding: 1rem;
+  margin: 1rem auto;
+  width: 80%;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  border-radius: 12px;
 }
 
 footer {

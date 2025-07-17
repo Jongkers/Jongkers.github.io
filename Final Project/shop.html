@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -16,6 +17,18 @@
     </nav>
   </header>
 
+  <div style="text-align:center; margin-top:1rem; margin-bottom: 1rem;">
+    <button onclick="toggleCart()" style="padding: 0.5rem 1rem; background-color: #ffcb05; border: none; border-radius: 10px; font-weight: bold; cursor: pointer;">
+      🛒 View Cart (<span id="cart-count">0</span>)
+    </button>
+  </div>
+  <div id="cart-panel" style="display:none; background:#fff; padding:1rem; margin:1rem auto; width:80%; box-shadow:0 4px 10px rgba(0,0,0,0.1); border-radius:12px;">
+    <h3>Your Cart</h3>
+    <ul id="cart-items"></ul>
+    <p><strong>Total:</strong> ₱<span id="cart-total">0.00</span></p>
+    <button onclick="checkout()" style="background:#2a75bb;color:#fff;padding:10px 20px;border:none;border-radius:10px;cursor:pointer;">Checkout</button>
+  </div>
+
   <div class="sub-tabs">
     <button onclick="showCategory('tickets')">Ticket Bundles</button>
     <button onclick="showCategory('items')">Items</button>
@@ -31,18 +44,20 @@
           <img src="/image/PokeCoin.jpg" alt="250 Coins">
           <h3>250 PokéCoins</h3>
           <p>₱125.00</p>
+          <button onclick="addToCart('250 PokéCoins', 125)">Add to Cart</button>
         </div>
         <div class="product-card">
           <img src="/image/PokeCoin.jpg" alt="600 Coins">
           <h3>600 PokéCoins</h3>
           <p>₱249.00</p>
+          <button onclick="addToCart('600 PokéCoins', 249)">Add to Cart</button>
         </div>
         <div class="product-card">
           <img src="/image/PokeCoin.jpg" alt="1300 Coins">
           <h3>1300 PokéCoins</h3>
           <p>₱479.00</p>
+          <button onclick="addToCart('1300 PokéCoins', 479)">Add to Cart</button>
         </div>
-        
       </div>
     </section>
 
@@ -53,6 +68,7 @@
           <img src="/image/Mystery.jpg" alt="Bundle 1">
           <h3>Starter Bundle</h3>
           <p>₱199.00</p>
+          <button onclick="addToCart('Starter Bundle', 199)">Add to Cart</button>
         </div>
       </div>
     </section>
@@ -62,8 +78,21 @@
       <div class="products">
         <div class="product-card">
           <img src="/image/ticket.png" alt="Ticket">
-          <h3>Event Ticket</h3>
-          <p>₱99.00</p>
+          <h3>Quaxly Community Day Ultra Ticket</h3>
+          <p>₱149.00</p>
+          <button onclick="addToCart('Quaxly Community Day Ultra Ticket', 149)">Add to Cart</button>
+        </div>
+        <div class="product-card">
+          <img src="/image/ticket.png" alt="Ticket">
+          <h3>Water Festival Ultra Ticket</h3>
+          <p>₱149.00</p>
+          <button onclick="addToCart('Water Festival Ultra Ticket', 149)">Add to Cart</button>
+        </div>
+        <div class="product-card">
+          <img src="/image/ticket.png" alt="Ticket">
+          <h3>G-MAX Lapras Max Battle Day Ultra Ticket</h3>
+          <p>₱149.00</p>
+          <button onclick="addToCart('G-MAX Lapras Max Battle Day Ultra Ticket', 149)">Add to Cart</button>
         </div>
       </div>
     </section>
@@ -75,6 +104,7 @@
           <img src="/image/egg pack.png" alt="Item">
           <h3>Lucky Egg Pack</h3>
           <p>₱149.00</p>
+          <button onclick="addToCart('Lucky Egg Pack', 149)">Add to Cart</button>
         </div>
       </div>
     </section>
