@@ -49,3 +49,38 @@ function checkout() {
   updateCartDisplay();
   document.getElementById('cart-panel').style.display = 'none';
 }
+
+
+const itemDescriptions = {
+  "250 PokéCoins": "Use 250 PokéCoins to buy premium items like Poké Balls, Incense, and more.",
+  "600 PokéCoins": "A medium amount of PokéCoins to give you an advantage in your journey.",
+  "1300 PokéCoins": "Enough PokéCoins for multiple upgrades or item purchases.",
+  "Starter Bundle": "Includes: 10 Poké Balls, 2 Lucky Eggs, 2 Incense, and 1 Remote Raid Pass.",
+  "Quaxly Community Day Ultra Ticket": "Includes: 5 Ultra Balls and 1 Ticket.",
+  "Water Festival Ultra Ticket": "Includes: 1 Star Piece and 1 Ticket.",
+  "G-MAX Lapras Max Battle Day Ultra Ticket": "Includes: 1 Max Particle Pack and 1 Ticket.",
+  "Lucky Egg Pack": "Includes 8 Lucky Eggs."
+};
+
+function showDetails(card) {
+  const title = card.querySelector('h3').innerText;
+  const image = card.querySelector('img').src;
+  const price = card.querySelector('p').innerText;
+  const description = itemDescriptions[title] || 'This item includes exclusive bonuses to enhance your Pokémon GO experience.';
+
+  document.getElementById('modal-title').innerText = title;
+  document.getElementById('modal-image').src = image;
+  document.getElementById('modal-price').innerText = price;
+  document.getElementById('modal-description').innerText = description;
+
+  document.getElementById('item-modal').style.display = 'flex';
+}
+
+function closeModal() {
+  document.getElementById('item-modal').style.display = 'none';
+}
+
+
+function closeModal() {
+  document.getElementById('item-modal').style.display = 'none';
+}

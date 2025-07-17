@@ -113,3 +113,47 @@ footer {
   padding: 1rem;
   margin-top: 2rem;
 }
+
+#item-modal {
+  display: none;
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background: rgba(0,0,0,0.5);
+  justify-content: center;
+  align-items: center;
+  z-index: 999;
+  animation: fadeIn 0.3s ease-in-out;
+}
+
+#item-modal .modal-content {
+  background: white;
+  padding: 2rem;
+  border-radius: 12px;
+  max-width: 400px;
+  width: 90%;
+  text-align: center;
+  position: relative;
+  transform: scale(0.9);
+  animation: scaleUp 0.3s ease-in-out forwards;
+}
+
+#item-modal img {
+  width: 100%;
+  transition: transform 0.3s ease-in-out;
+  margin-bottom: 1rem;
+  cursor: zoom-in;
+}
+
+#item-modal img:hover {
+  transform: scale(1.1);
+}
+
+@keyframes fadeIn {
+  from {opacity: 0;}
+  to {opacity: 1;}
+}
+
+@keyframes scaleUp {
+  to {transform: scale(1);}
+}
