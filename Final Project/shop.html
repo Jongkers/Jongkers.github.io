@@ -1,3 +1,195 @@
+Skip to content
+Chat history
+
+You said:
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Pokémon GO Enhanced</title>
+  <link rel="stylesheet" href="homepage.css" />
+  <link rel="stylesheet" href="shop.css" />
+</head>
+<body>
+  <main class="carousel-wrapper">
+    <button class="carousel-nav prev">◀</button>
+    <div class="carousel" id="carousel">
+      <section class="carousel-slide" id="home">
+        <div class="hero">
+          <div class="bg-map"></div>
+          <div class="pikachu">
+            <img src="logo.png" alt="Pikachu" />
+            <div class="lightning"></div>
+          </div>
+          <div class="download-links">
+            <a href="#"><img src="apol2.webp" alt="iOS Download" /></a>
+            <a href="#"><img src="gogil.webp" alt="Android Download" /></a>
+          </div>
+        </div>
+      </section>
+
+      <section class="carousel-slide" id="login">
+        <form class="form" id="login-form">
+          <h2>Login</h2>
+          <input type="text" id="username" placeholder="Username" required />
+          <input type="password" id="password" placeholder="Password" required />
+          <a href="#">Forgot password?</a>
+          <button type="submit">Login</button>
+          <p>Not registered? <a href="#" id="go-register">Create an account</a></p>
+        </form>
+      </section>
+
+      <section class="carousel-slide" id="register">
+        <form class="form">
+          <h2>Register</h2>
+          <input type="text" placeholder="Name" required />
+          <input type="email" placeholder="Email" required />
+          <input type="password" placeholder="Password" required />
+          <input type="password" placeholder="Confirm Password" required />
+          <select required>
+            <option disabled selected>Select Team</option>
+            <option>Team Mystic</option>
+            <option>Team Valor</option>
+            <option>Team Instinct</option>
+          </select>
+          <button type="submit">Register</button>
+          <p>Already have an account? <a href="#" id="go-login">Back to Login</a></p>
+        </form>
+      </section>
+
+      <section class="carousel-slide" id="about">
+        <div class="about-text">
+          <h2>About Pokémon GO</h2>
+          <p>Explore the world with Pokémon! Catch, battle, and train in real-life locations.</p>
+          <p>Join millions of Trainers today!</p>
+        </div>
+      </section>
+
+      <section class="carousel-slide" id="products">
+        <div class="product-grid">
+          <div class="product-card">PokéCoins Pack</div>
+          <div class="product-card">Item Bundle</div>
+          <div class="product-card">Premium Raid Pass</div>
+        </div>
+      </section>
+    </div>
+    <button class="carousel-nav next">▶</button>
+  </main>
+
+  <section class="pokemon-section">
+    <h2>Featured Pokémon</h2>
+    <input type="text" placeholder="Search famous Pokémon" id="search-box" />
+    <div class="pokemon-carousel" id="pokemon-carousel">
+    </div>
+  </section>
+
+  <section class="trainer-id" id="trainer-id">
+    <h2>Here is your Trainer ID</h2>
+    <p id="trainer-name">Name: --</p>
+    <p id="trainer-level">Level: --</p>
+    <p id="trainer-team">Team: --</p>
+    <p id="trainer-coins">PokéCoins: --</p>
+  </section>
+
+  <script>
+  const famousPokemon = [
+    { name: "Pikachu", gen: 1, img: "images/Pokemon_Pikachu_art.png" },
+    { name: "Charizard", gen: 1, img: "charizard.png" },
+    { name: "Lucario", gen: 4, img: "lucario.png" },
+    { name: "Greninja", gen: 6, img: "greninja.png" },
+    { name: "Garchomp", gen: 4, img: "garchomp.png" },
+    { name: "Gardevoir", gen: 3, img: "gardevoir.png" }
+  ];
+
+  const container = document.getElementById("pokemon-carousel");
+  const searchBox = document.getElementById("search-box");
+
+  function renderPokemonList(pokemonList) {
+  container.innerHTML = "";
+  pokemonList.forEach(p => {
+    const card = document.createElement("div");
+    card.className = "pokemon-card";
+
+    const img = document.createElement("img");
+    img.src = p.img;
+    img.alt = p.name;
+
+    const name = document.createElement("p");
+    name.textContent = ${p.name} (Gen ${p.gen});
+
+    card.appendChild(img);
+    card.appendChild(name);
+
+    container.appendChild(card);
+  });
+}
+
+
+  searchBox.addEventListener("input", () => {
+    const query = searchBox.value.toLowerCase();
+    const filtered = famousPokemon.filter(p => p.name.toLowerCase().includes(query));
+    renderPokemonList(filtered);
+  });
+
+  renderPokemonList(famousPokemon);
+
+  const carousel = document.getElementById("carousel");
+  const slides = document.querySelectorAll(".carousel-slide");
+  const nextBtn = document.querySelector(".carousel-nav.next");
+  const prevBtn = document.querySelector(".carousel-nav.prev");
+  let index = 0;
+
+  function updateCarousel() {
+    carousel.scrollTo({ left: index * window.innerWidth, behavior: 'smooth' });
+  }
+
+  nextBtn.addEventListener("click", () => {
+    index = (index + 1) % slides.length;
+    updateCarousel();
+  });
+
+  prevBtn.addEventListener("click", () => {
+    index = (index - 1 + slides.length) % slides.length;
+    updateCarousel();
+  });
+
+  const loginForm = document.getElementById("login-form");
+  loginForm.addEventListener("submit", (e) => {
+    e.preventDefault();
+    const name = document.getElementById("username").value;
+    const trainerData = {
+      name: name,
+      level: Math.floor(Math.random() * 40) + 1,
+      team: ["Mystic", "Valor", "Instinct"][Math.floor(Math.random() * 3)],
+      coins: Math.floor(Math.random() * 5000)
+    };
+
+    document.getElementById("trainer-name").textContent = Name: ${trainerData.name};
+    document.getElementById("trainer-level").textContent = Level: ${trainerData.level};
+    document.getElementById("trainer-team").textContent = Team: ${trainerData.team};
+    document.getElementById("trainer-coins").textContent = PokéCoins: ${trainerData.coins};
+
+    index = 0;
+    updateCarousel();
+  });
+
+  const goRegister = document.getElementById("go-register");
+  goRegister.addEventListener("click", (e) => {
+    e.preventDefault();
+    index = 2; // 0=home, 1=login, 2=register
+    updateCarousel();
+  });
+
+  const goLogin = document.getElementById("go-login");
+  goLogin.addEventListener("click", (e) => {
+    e.preventDefault();
+    index = 1; // 0=home, 1=login
+    updateCarousel();
+  });
+</script>
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -200,3 +392,403 @@
   <script src="jsscript.js"></script>
 </body>
 </html>
+
+Completely combine these two codes
+
+ChatGPT said:
+Here is the fully combined version of the two HTML pages: the enhanced Pokémon GO landing page and the Shop page. All relevant sections (carousel, login/register/about, product listings, shopping cart, modals, etc.) are merged into one complete HTML file, maintaining all original functionality and layout.
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Pokémon GO Enhanced Shop</title>
+  <link rel="stylesheet" href="homepage.css" />
+  <link rel="stylesheet" href="shop.css" />
+  <link rel="stylesheet" href="shopstyle.css" />
+</head>
+<body>
+  <!-- Carousel Navigation -->
+  <main class="carousel-wrapper">
+    <button class="carousel-nav prev">◀</button>
+    <div class="carousel" id="carousel">
+      <!-- Home Section -->
+      <section class="carousel-slide" id="home">
+        <div class="hero">
+          <div class="bg-map"></div>
+          <div class="pikachu">
+            <img src="logo.png" alt="Pikachu" />
+            <div class="lightning"></div>
+          </div>
+          <div class="download-links">
+            <a href="#"><img src="apol2.webp" alt="iOS Download" /></a>
+            <a href="#"><img src="gogil.webp" alt="Android Download" /></a>
+          </div>
+        </div>
+      </section>
+
+      <!-- Login Section -->
+      <section class="carousel-slide" id="login">
+        <form class="form" id="login-form">
+          <h2>Login</h2>
+          <input type="text" id="username" placeholder="Username" required />
+          <input type="password" id="password" placeholder="Password" required />
+          <a href="#">Forgot password?</a>
+          <button type="submit">Login</button>
+          <p>Not registered? <a href="#" id="go-register">Create an account</a></p>
+        </form>
+      </section>
+
+      <!-- Register Section -->
+      <section class="carousel-slide" id="register">
+        <form class="form">
+          <h2>Register</h2>
+          <input type="text" placeholder="Name" required />
+          <input type="email" placeholder="Email" required />
+          <input type="password" placeholder="Password" required />
+          <input type="password" placeholder="Confirm Password" required />
+          <select required>
+            <option disabled selected>Select Team</option>
+            <option>Team Mystic</option>
+            <option>Team Valor</option>
+            <option>Team Instinct</option>
+          </select>
+          <button type="submit">Register</button>
+          <p>Already have an account? <a href="#" id="go-login">Back to Login</a></p>
+        </form>
+      </section>
+
+      <!-- About Section -->
+      <section class="carousel-slide" id="about">
+        <div class="about-text">
+          <h2>About Pokémon GO</h2>
+          <p>Explore the world with Pokémon! Catch, battle, and train in real-life locations.</p>
+          <p>Join millions of Trainers today!</p>
+        </div>
+      </section>
+
+      <!-- Product Highlights -->
+      <section class="carousel-slide" id="products">
+        <div class="product-grid">
+          <div class="product-card">PokéCoins Pack</div>
+          <div class="product-card">Item Bundle</div>
+          <div class="product-card">Premium Raid Pass</div>
+        </div>
+      </section>
+
+      <!-- SHOP SECTION -->
+      <section class="carousel-slide" id="shop">
+        <header>
+          <div class="logo">Pokémon GO Shop</div>
+          <nav class="main-nav">
+            <ul>
+              <li><a href="#" class="active-tab" onclick="switchTab('shop')">Shop</a></li>
+            </ul>
+          </nav>
+        </header>
+
+        <div id="cart-panel" style="display:none;">
+          <h3>Your Cart</h3>
+          <ul id="cart-items"></ul>
+          <p><strong>Total:</strong> ₱<span id="cart-total">0.00</span></p>
+          <button onclick="checkout()">Checkout</button>
+        </div>
+
+        <div class="sub-tabs">
+          <button onclick="showCategory('tickets')">Ticket Bundles</button>
+          <button onclick="showCategory('items')">Items</button>
+          <button onclick="showCategory('coins')">PokéCoins</button>
+          <button onclick="showCategory('bundles')">Daily Bundles</button>
+          <button class="cart-icon-btn" onclick="toggleCart()">🛒 <span id="cart-count">0</span></button>
+        </div>
+
+        <main>
+          <!-- COINS -->
+          <section id="coins" class="category active">
+            <h2>PokéCoins</h2>
+            <div class="products">
+              <div class="product-card" onclick="showDetails(this)">
+          <img src="/image/PokeCoin.jpg" alt="250 Coins">
+          <h3>110 PokéCoins</h3>
+          <p>₱125.00</p>
+          <button onclick="event.stopPropagation(); addToCart('250 PokéCoins', 125)">Add to Cart</button>
+        </div>
+        <div class="product-card" onclick="showDetails(this)">
+          <img src="/image/PokeCoin.jpg" alt="600 Coins">
+          <h3>600 PokéCoins</h3>
+          <p>₱150.00</p>
+          <button onclick="event.stopPropagation(); addToCart('600 PokéCoins', 150)">Add to Cart</button>
+        </div>
+        <div class="product-card" onclick="showDetails(this)">
+          <img src="/image/PokeCoin.jpg" alt="1300 Coins">
+          <h3>1,300 PokéCoins</h3>
+          <p>₱290.00</p>
+          <button onclick="event.stopPropagation(); addToCart('1,300 PokéCoins', 290)">Add to Cart</button>
+        </div>
+        <div class="product-card" onclick="showDetails(this)">
+          <img src="/image/PokeCoin.jpg" alt="1300 Coins">
+          <h3>2,700 PokéCoins</h3>
+          <p>₱590.00</p>
+          <button onclick="event.stopPropagation(); addToCart('2,700 PokéCoins', 590)">Add to Cart</button>
+        </div>
+        <div class="product-card" onclick="showDetails(this)">
+          <img src="/image/PokeCoin.jpg" alt="1300 Coins">
+          <h3>5,600 PokéCoins</h3>
+          <p>₱1,199.00</p>
+          <button onclick="event.stopPropagation(); addToCart('5,600 PokéCoins', 1199)">Add to Cart</button>
+        </div>
+        <div class="product-card" onclick="showDetails(this)">
+          <img src="/image/PokeCoin.jpg" alt="1300 Coins">
+          <h3>15,500 PokéCoins</h3>
+          <p>₱3,000.00</p>
+          <button onclick="event.stopPropagation(); addToCart('15,500 PokéCoins', 3000)">Add to Cart</button>
+        </div>
+            </div>
+          </section>
+
+          <!-- TICKETS -->
+          <section id="tickets" class="category">
+            <h2>Tickets</h2>
+            <div class="products">
+              <div class="product-card" onclick="showDetails(this)">
+          <img src="/image/ticket.png" alt="Ticket">
+          <h3>Quaxly Community Day Ultra Ticket</h3>
+          <p>₱149.00</p>
+          <button onclick="event.stopPropagation(); addToCart('Quaxly Community Day Ultra Ticket', 149)">Add to Cart</button>
+        </div>
+        <div class="product-card" onclick="showDetails(this)">
+          <img src="/image/ticket.png" alt="Ticket">
+          <h3>Water Festival Ultra Ticket</h3>
+          <p>₱149.00</p>
+          <button onclick="event.stopPropagation(); addToCart('Water Festival Ultra Ticket', 149)">Add to Cart</button>
+        </div>
+        <div class="product-card" onclick="showDetails(this)">
+          <img src="/image/ticket.png" alt="Ticket">
+          <h3>G-MAX Lapras Max Battle Day Ultra Ticket</h3>
+          <p>₱149.00</p>
+          <button onclick="event.stopPropagation(); addToCart('G-MAX Lapras Max Battle Day Ultra Ticket', 149)">Add to Cart</button>
+        </div>
+            </div>
+          </section>
+
+          <!-- ITEMS -->
+          <section id="items" class="category">
+            <h2>Items</h2>
+            <div class="products">
+              <div class="product-card" onclick="showDetails(this)">
+          <img src="/image/lucky.jpg" alt="Item">
+          <h3>Lucky Egg Pack</h3>
+          <p>₱149.00</p>
+          <button onclick="event.stopPropagation(); addToCart('Lucky Egg Pack', 149)">Add to Cart</button>
+        </div>
+        <div class="product-card" onclick="showDetails(this)">
+          <img src="/image/starpiece.png" alt="Item">
+          <h3>Star Piece</h3>
+          <p>₱179.00</p>
+          <button onclick="event.stopPropagation(); addToCart('Star Piece', 179)">Add to Cart</button>
+        </div>
+        <div class="product-card" onclick="showDetails(this)">
+          <img src="/image/raidpass.png" alt="Item">
+          <h3>Remote Raid Pass</h3>
+          <p>₱99.00</p>
+          <button onclick="event.stopPropagation(); addToCart('Remote Raid Pass', 99)">Add to Cart</button>
+        </div>
+        <div class="product-card" onclick="showDetails(this)">
+          <img src="/image/storage.png" alt="Item">
+          <h3>Pokémon Storage</h3>
+          <p>₱99.00</p>
+          <button onclick="event.stopPropagation(); addToCart('Pokémon Storage', 99)">Add to Cart</button>
+        </div>
+        <div class="product-card" onclick="showDetails(this)">
+          <img src="/image/item bag.jpg" alt="Item">
+          <h3>Item Bag</h3>
+          <p>₱59.00</p>
+          <button onclick="event.stopPropagation(); addToCart('Item Bag', 59)">Add to Cart</button>
+        </div>
+        <div class="product-card" onclick="showDetails(this)">
+          <img src="/image/egg incubator.jpg" alt="Item">
+          <h3>Egg Incubator</h3>
+          <p>₱99.00</p>
+          <button onclick="event.stopPropagation(); addToCart('Egg Incubator', 99)">Add to Cart</button>
+        </div>
+        <div class="product-card" onclick="showDetails(this)">
+          <img src="/image/superegg.png" alt="Item">
+          <h3>Super Egg Incubator</h3>
+          <p>₱99.00</p>
+          <button onclick="event.stopPropagation(); addToCart('Super Egg Incubator', 99)">Add to Cart</button>
+        </div>
+        <div class="product-card" onclick="showDetails(this)">
+          <img src="/image/maxrevive.png" alt="Item">
+          <h3>Max Revive</h3>
+          <p>₱59.00</p>
+          <button onclick="event.stopPropagation(); addToCart('Max Revive', 59)">Add to Cart</button>
+        </div>
+        <div class="product-card" onclick="showDetails(this)">
+          <img src="/image/premium-battle-pass.png" alt="Item">
+          <h3>Premium Battle Pass</h3>
+          <p>₱99.00</p>
+          <button onclick="event.stopPropagation(); addToCart('Premium Battle Pass', 99)">Add to Cart</button>
+        </div>
+        <div class="product-card" onclick="showDetails(this)">
+          <img src="/image/max-particle-pack.png" alt="Item">
+          <h3>Max Particle Pack</h3>
+          <p>₱220.00</p>
+          <button onclick="event.stopPropagation(); addToCart('Max Particle Pack', 220)">Add to Cart</button>
+        </div>
+        <div class="product-card" onclick="showDetails(this)">
+          <img src="/image/max-mushrooms.png" alt="Item">
+          <h3>Max Mushroom</h3>
+          <p>₱299.00</p>
+          <button onclick="event.stopPropagation(); addToCart('Max Mushroom', 299)">Add to Cart</button>
+        </div>
+            </div>
+          </section>
+
+          <!-- BUNDLES -->
+          <section id="bundles" class="category">
+            <h2>Bundles</h2>
+            <div class="products">
+              <div class="product-card" onclick="showDetails(this)">
+          <img src="/image/Mystery.jpg" alt="Bundle 1">
+          <h3>Starter Bundle</h3>
+          <p>₱199.00</p>
+          <button onclick="event.stopPropagation(); addToCart('Starter Bundle', 199)">Add to Cart</button>
+        </div>
+            </div>
+          </section>
+        </main>
+      </section>
+    </div>
+    <button class="carousel-nav next">▶</button>
+  </main>
+
+  <!-- Pokémon Search Section -->
+  <section class="pokemon-section">
+    <h2>Featured Pokémon</h2>
+    <input type="text" placeholder="Search famous Pokémon" id="search-box" />
+    <div class="pokemon-carousel" id="pokemon-carousel"></div>
+  </section>
+
+  <!-- Trainer Info -->
+  <section class="trainer-id" id="trainer-id">
+    <h2>Here is your Trainer ID</h2>
+    <p id="trainer-name">Name: --</p>
+    <p id="trainer-level">Level: --</p>
+    <p id="trainer-team">Team: --</p>
+    <p id="trainer-coins">PokéCoins: --</p>
+  </section>
+
+  <!-- Item Modal -->
+  <div id="item-modal" style="display:none;" onclick="closeModal()">
+    <div class="modal-content" onclick="event.stopPropagation()">
+      <button onclick="closeModal()" style="position:absolute; top:10px; right:10px;">&times;</button>
+      <h2 id="modal-title"></h2>
+      <img id="modal-image" src="" alt="" />
+      <p id="modal-price"></p>
+      <p id="modal-description"></p>
+    </div>
+  </div>
+
+  <footer>
+    <p>© 2025 Pokémon. All rights reserved.</p>
+  </footer>
+
+  <!-- JavaScript -->
+  <script src="jsscript.js"></script>
+  <script>
+    // Famous Pokémon Search Logic
+    const famousPokemon = [
+      { name: "Pikachu", gen: 1, img: "images/Pokemon_Pikachu_art.png" },
+      { name: "Charizard", gen: 1, img: "charizard.png" },
+      { name: "Lucario", gen: 4, img: "lucario.png" },
+      { name: "Greninja", gen: 6, img: "greninja.png" },
+      { name: "Garchomp", gen: 4, img: "garchomp.png" },
+      { name: "Gardevoir", gen: 3, img: "gardevoir.png" }
+    ];
+
+    const container = document.getElementById("pokemon-carousel");
+    const searchBox = document.getElementById("search-box");
+
+    function renderPokemonList(list) {
+      container.innerHTML = "";
+      list.forEach(p => {
+        const card = document.createElement("div");
+        card.className = "pokemon-card";
+        const img = document.createElement("img");
+        img.src = p.img;
+        img.alt = p.name;
+        const name = document.createElement("p");
+        name.textContent = `${p.name} (Gen ${p.gen})`;
+        card.appendChild(img);
+        card.appendChild(name);
+        container.appendChild(card);
+      });
+    }
+
+    searchBox.addEventListener("input", () => {
+      const query = searchBox.value.toLowerCase();
+      const filtered = famousPokemon.filter(p => p.name.toLowerCase().includes(query));
+      renderPokemonList(filtered);
+    });
+
+    renderPokemonList(famousPokemon);
+
+    // Carousel Controls
+    const carousel = document.getElementById("carousel");
+    const slides = document.querySelectorAll(".carousel-slide");
+    const nextBtn = document.querySelector(".carousel-nav.next");
+    const prevBtn = document.querySelector(".carousel-nav.prev");
+    let index = 0;
+
+    function updateCarousel() {
+      carousel.scrollTo({ left: index * window.innerWidth, behavior: 'smooth' });
+    }
+
+    nextBtn.addEventListener("click", () => {
+      index = (index + 1) % slides.length;
+      updateCarousel();
+    });
+
+    prevBtn.addEventListener("click", () => {
+      index = (index - 1 + slides.length) % slides.length;
+      updateCarousel();
+    });
+
+    // Login Form Logic
+    const loginForm = document.getElementById("login-form");
+    loginForm.addEventListener("submit", (e) => {
+      e.preventDefault();
+      const name = document.getElementById("username").value;
+      const trainerData = {
+        name: name,
+        level: Math.floor(Math.random() * 40) + 1,
+        team: ["Mystic", "Valor", "Instinct"][Math.floor(Math.random() * 3)],
+        coins: Math.floor(Math.random() * 5000)
+      };
+
+      document.getElementById("trainer-name").textContent = `Name: ${trainerData.name}`;
+      document.getElementById("trainer-level").textContent = `Level: ${trainerData.level}`;
+      document.getElementById("trainer-team").textContent = `Team: ${trainerData.team}`;
+      document.getElementById("trainer-coins").textContent = `PokéCoins: ${trainerData.coins}`;
+
+      index = 0;
+      updateCarousel();
+    });
+
+    // Form Navigation
+    document.getElementById("go-register").addEventListener("click", (e) => {
+      e.preventDefault();
+      index = 2;
+      updateCarousel();
+    });
+
+    document.getElementById("go-login").addEventListener("click", (e) => {
+      e.preventDefault();
+      index = 1;
+      updateCarousel();
+    });
+  </script>
+</body>
+</html>
+
