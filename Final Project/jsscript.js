@@ -36,8 +36,17 @@ function updateCartDisplay() {
 
 function toggleCart() {
   const panel = document.getElementById('cart-panel');
-  panel.style.display = panel.style.display === 'none' ? 'block' : 'none';
+  if (panel.style.display === 'none' || panel.style.display === '') {
+    panel.style.display = 'block';
+    panel.style.animation = 'slideDown 0.3s ease-out';
+  } else {
+    panel.style.animation = 'fadeOut 0.2s ease-in-out';
+    setTimeout(() => {
+      panel.style.display = 'none';
+    }, 200);
+  }
 }
+
 
 function checkout() {
   if (cart.length === 0) {
@@ -54,7 +63,7 @@ function checkout() {
 const itemDescriptions = {
   "250 PokéCoins": "Use 250 PokéCoins to buy premium items like Poké Balls, Incense, and more.",
   "600 PokéCoins": "A medium amount of PokéCoins to give you an advantage in your journey.",
-  "1300 PokéCoins": "Enough PokéCoins for multiple upgrades or item purchases.",
+  "1,300 PokéCoins": "Enough PokéCoins for multiple upgrades or item purchases.",
   "2,700 PokéCoins": "A large amount of PokéCoins to fully equip your Pokémon GO experience.",
   "5,600 PokéCoins": "A substantial amount of PokéCoins to ensure you have everything you need.",
   "15,500 PokéCoins": "A extreme large amount of PokéCoins to get you started on your Pokémon journey.",
