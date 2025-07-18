@@ -3,95 +3,39 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Pokémon GO Enhanced Shop</title>
-  <link rel="stylesheet" href="homepage.css" />
-  <link rel="stylesheet" href="shop.css" />
+  <title>Pokémon GO Shop</title>
   <link rel="stylesheet" href="shopstyle.css" />
 </head>
 <body>
+  <header>
+    <div class="logo">Pokémon GO Shop</div>
+    <nav class="main-nav">
+      <ul>
+        <li><a href="#" class="active-tab" onclick="switchTab('shop')">Shop</a></li>
+      </ul>
+    </nav>
+  </header>
 
-  <main class="carousel-wrapper">
-    <button class="carousel-nav prev">◀</button>
-    <div class="carousel" id="carousel">
-      <section class="carousel-slide" id="home">
-        <div class="hero">
-          <div class="bg-map"></div>
-          <div class="pikachu">
-            <img src="logo.png" alt="Pikachu" />
-            <div class="lightning"></div>
-          </div>
-          <div class="download-links">
-            <a href="#"><img src="/image/apol2.webp" alt="iOS Download" /></a>
-            <a href="#"><img src="/image/gogil.webp" alt="Android Download" /></a>
-          </div>
-        </div>
-      </section>
+  <div id="cart-panel" style="display:none; background:#fff; padding:1rem; margin:1rem auto; width:80%; box-shadow:0 4px 10px rgba(0,0,0,0.1); border-radius:12px;">
+    <h3>Your Cart</h3>
+    <ul id="cart-items"></ul>
+    <p><strong>Total:</strong> ₱<span id="cart-total">0.00</span></p>
+    <button onclick="checkout()" style="background:#2a75bb;color:#fff;padding:10px 20px;border:none;border-radius:10px;cursor:pointer;">Checkout</button>
+  </div>
 
-      <section class="carousel-slide" id="login">
-        <form class="form" id="login-form">
-          <h2>Login</h2>
-          <input type="text" id="username" placeholder="Username" required />
-          <input type="password" id="password" placeholder="Password" required />
-          <a href="#">Forgot password?</a>
-          <button type="submit">Login</button>
-          <p>Not registered? <a href="#" id="go-register">Create an account</a></p>
-        </form>
-      </section>
+  <div class="sub-tabs">
+    <button onclick="showCategory('tickets')">Ticket Bundles</button>
+    <button onclick="showCategory('items')">Items</button>
+    <button onclick="showCategory('coins')">PokéCoins</button>
+    <button onclick="showCategory('bundles')">Daily Bundles</button>
+    <button class="cart-icon-btn" onclick="toggleCart()">🛒 <span id="cart-count">0</span></button>
+  </div>
 
-      <section class="carousel-slide" id="register">
-        <form class="form">
-          <h2>Register</h2>
-          <input type="text" placeholder="Name" required />
-          <input type="email" placeholder="Email" required />
-          <input type="password" placeholder="Password" required />
-          <input type="password" placeholder="Confirm Password" required />
-          <select required>
-            <option disabled selected>Select Team</option>
-            <option>Team Mystic</option>
-            <option>Team Valor</option>
-            <option>Team Instinct</option>
-          </select>
-          <button type="submit">Register</button>
-          <p>Already have an account? <a href="#" id="go-login">Back to Login</a></p>
-        </form>
-      </section>
-
-      <section class="carousel-slide" id="about">
-        <div class="about-text">
-          <h2>About Pokémon GO</h2>
-          <p>Explore the world with Pokémon! Catch, battle, and train in real-life locations.</p>
-          <p>Join millions of Trainers today!</p>
-        </div>
-      </section>
-
-      <section class="carousel-slide" id="shop">
-        <header>
-          <nav class="main-nav">
-            <ul>
-              <li><a href="#" class="active-tab" onclick="switchTab('shop')">Shop</a></li>
-            </ul>
-          </nav>
-        </header>
-
-        <div id="cart-panel" style="display:none;">
-          <h3>Your Cart</h3>
-          <ul id="cart-items"></ul>
-          <p><strong>Total:</strong> ₱<span id="cart-total">0.00</span></p>
-          <button onclick="checkout()">Checkout</button>
-        </div>
-
-        <div class="sub-tabs">
-          <button onclick="showCategory('tickets')">Ticket Bundles</button>
-          <button onclick="showCategory('items')">Items</button>
-          <button onclick="showCategory('coins')">PokéCoins</button>
-          <button onclick="showCategory('bundles')">Daily Bundles</button>
-          <button class="cart-icon-btn" onclick="toggleCart()">🛒 <span id="cart-count">0</span></button>
-        </div>
-
-        <main>
-          <section id="coins" class="category active">
-            <div class="products">
-              <div class="product-card" onclick="showDetails(this)">
+  <main>
+<section id="coins" class="category active">
+      <h2>PokéCoins</h2>
+      <div class="products">
+        <div class="product-card" onclick="showDetails(this)">
           <img src="/image/PokeCoin.jpg" alt="250 Coins">
           <h3>110 PokéCoins</h3>
           <p>₱125.00</p>
@@ -127,12 +71,25 @@
           <p>₱3,000.00</p>
           <button onclick="event.stopPropagation(); addToCart('15,500 PokéCoins', 3000)">Add to Cart</button>
         </div>
-            </div>
-          </section>
+      </div>
+    </section>
 
-          <section id="tickets" class="category">
-            <div class="products">
-              <div class="product-card" onclick="showDetails(this)">
+    <section id="bundles" class="category">
+      <h2>Bundles</h2>
+      <div class="products">
+        <div class="product-card" onclick="showDetails(this)">
+          <img src="/image/Mystery.jpg" alt="Bundle 1">
+          <h3>Starter Bundle</h3>
+          <p>₱199.00</p>
+          <button onclick="event.stopPropagation(); addToCart('Starter Bundle', 199)">Add to Cart</button>
+        </div>
+      </div>
+    </section>
+
+    <section id="tickets" class="category">
+      <h2>Tickets</h2>
+      <div class="products">
+        <div class="product-card" onclick="showDetails(this)">
           <img src="/image/ticket.png" alt="Ticket">
           <h3>Quaxly Community Day Ultra Ticket</h3>
           <p>₱149.00</p>
@@ -150,12 +107,13 @@
           <p>₱149.00</p>
           <button onclick="event.stopPropagation(); addToCart('G-MAX Lapras Max Battle Day Ultra Ticket', 149)">Add to Cart</button>
         </div>
-            </div>
-          </section>
+      </div>
+    </section>
 
-          <section id="items" class="category">
-            <div class="products">
-              <div class="product-card" onclick="showDetails(this)">
+    <section id="items" class="category">
+      <h2>Items</h2>
+      <div class="products">
+        <div class="product-card" onclick="showDetails(this)">
           <img src="/image/lucky.jpg" alt="Item">
           <h3>Lucky Egg Pack</h3>
           <p>₱149.00</p>
@@ -198,49 +156,38 @@
           <button onclick="event.stopPropagation(); addToCart('Super Egg Incubator', 99)">Add to Cart</button>
         </div>
         <div class="product-card" onclick="showDetails(this)">
+          <img src="/image/maxrevive.png" alt="Item">
+          <h3>Max Revive</h3>
+          <p>₱59.00</p>
+          <button onclick="event.stopPropagation(); addToCart('Max Revive', 59)">Add to Cart</button>
+        </div>
+        <div class="product-card" onclick="showDetails(this)">
           <img src="/image/premium-battle-pass.png" alt="Item">
           <h3>Premium Battle Pass</h3>
           <p>₱99.00</p>
           <button onclick="event.stopPropagation(); addToCart('Premium Battle Pass', 99)">Add to Cart</button>
         </div>
-            </div>
-          </section>
-
-          <section id="bundles" class="category">
-            <div class="products">
-              <div class="product-card" onclick="showDetails(this)">
-          <img src="/image/Mystery.jpg" alt="Bundle 1">
-          <h3>Starter Bundle</h3>
-          <p>₱199.00</p>
-          <button onclick="event.stopPropagation(); addToCart('Starter Bundle', 199)">Add to Cart</button>
+        <div class="product-card" onclick="showDetails(this)">
+          <img src="/image/max-particle-pack.png" alt="Item">
+          <h3>Max Particle Pack</h3>
+          <p>₱220.00</p>
+          <button onclick="event.stopPropagation(); addToCart('Max Particle Pack', 220)">Add to Cart</button>
         </div>
-            </div>
-          </section>
-        </main>
-      </section>
-    </div>
-    <button class="carousel-nav next">▶</button>
+        <div class="product-card" onclick="showDetails(this)">
+          <img src="/image/max-mushrooms.png" alt="Item">
+          <h3>Max Mushroom</h3>
+          <p>₱299.00</p>
+          <button onclick="event.stopPropagation(); addToCart('Max Mushroom', 299)">Add to Cart</button>
+        </div>
+      </div>
+    </section>
   </main>
-
-  <section class="pokemon-section">
-    <h2>Featured Pokémon</h2>
-    <input type="text" placeholder="Search famous Pokémon" id="search-box" />
-    <div class="pokemon-carousel" id="pokemon-carousel"></div>
-  </section>
-
-  <section class="trainer-id" id="trainer-id">
-    <h2>Here is your Trainer ID</h2>
-    <p id="trainer-name">Name: --</p>
-    <p id="trainer-level">Level: --</p>
-    <p id="trainer-team">Team: --</p>
-    <p id="trainer-coins">PokéCoins: --</p>
-  </section>
 
   <div id="item-modal" style="display:none;" onclick="closeModal()">
     <div class="modal-content" onclick="event.stopPropagation()">
-      <button onclick="closeModal()" style="position:absolute; top:10px; right:10px;">&times;</button>
+      <button onclick="closeModal()" style="position:absolute; top:10px; right:10px; background:#ccc; border:none; border-radius:50%; width:30px; height:30px; cursor:pointer;">&times;</button>
       <h2 id="modal-title"></h2>
-      <img id="modal-image" src="" alt="" />
+      <img id="modal-image" src="" alt="">
       <p id="modal-price"></p>
       <p id="modal-description"></p>
     </div>
@@ -251,7 +198,5 @@
   </footer>
 
   <script src="jsscript.js"></script>
-
 </body>
 </html>
-
