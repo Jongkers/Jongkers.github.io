@@ -557,60 +557,65 @@ body {
   background-color: #f9f9f9;
 }
 
-/*css of about tab*/
+/* ========================================================================== */
+/* Existing CSS for the About Section (Desktop-first approach) */
+/* ========================================================================== */
 
 #about {
-  display: flex; 
-  justify-content: center; 
+  background: url('Animated GIF.gif') no-repeat center center / cover;
+  display: flex;
+  justify-content: center;
   align-items: center;
-  padding: 0; 
+  padding: 0;
+  /* Ensure it takes full height for carousel slide */
+  min-height: 100vh;
 }
-
 
 .bgcontain {
   position: relative;
-  width: 1000px; 
+  width: 1000px; /* This is the desktop base width, will be overridden */
   height: auto;
-  display: flex; 
-  justify-content: center; 
-  align-items: center; 
+  display: flex;
+  justify-content: center;
+  align-items: center;
   flex-direction: column;
-  margin: 0;
-  font-family: 'Segoe UI', sans-serif;
-  height: 100vh;
+  /* Add a max-width to prevent it from becoming too large on very wide screens */
+  max-width: 90vw; /* Example: 90% of viewport width */
 }
 
 .bg-frame {
   z-index: 0;
-  width: 143%;
+  width: 100%;
   height: auto;
   display: block;
 }
 
 .title {
-    position: absolute;
-    z-index: 2;
-    /*top: 78px;*/
-    /* right: 15px; */
-    /* left: 50%; */
-    transform: translateX(-18%);
+  position: absolute;
+  z-index: 2;
+  top: 78px; /* Original value, adjust as needed */
+  left: 50%;
+  transform: translateX(-50%);
+  width: 149%; /* Original value, adjust as needed */
+  max-width: 800px; /* Limit max size */
 }
 
 .title img {
   pointer-events: none;
-  width: 149%;
+  width: 100%;
 }
 
 .left-panel {
-    position: absolute;
-    top: 174px;
-    left: -170px;
-    width: 93%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    z-index: 1;
-    transform: rotate(-5deg);
+  position: absolute;
+  top: 174px; /* Original value, adjust as needed */
+  left: -170px; /* Original value, adjust as needed */
+  width: 93%; /* Original value, adjust as needed */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1;
+  transform: rotate(-5deg);
+  max-width: 600px; /* Limit max size */
 }
 
 .left-panel img {
@@ -621,81 +626,248 @@ body {
 }
 
 .scroll-text {
-    position: absolute;
-    top: 351px;
-    right: 13px;
-    width: 20%;
-    height: 28%;
-    /*overflow-y: auto;*/
-    font-size: 12px;
-    color: #000;
+  position: absolute;
+  top: 351px; /* Original value, adjust as needed */
+  right: 13px; /* Original value, adjust as needed */
+  width: 20%; /* Original value, adjust as needed */
+  height: 28%; /* Original value, adjust as needed */
+  overflow-y: auto;
+  font-size: 12px;
+  color: #000;
+  line-height: 1.4;
 }
 
-.right-panel img{
-    position: absolute;
-    pointer-events: none;
-    z-index: 1;
-    width: 135%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    top: -52px;
-    right: -187px;
+.right-panel img {
+  position: absolute;
+  pointer-events: none;
+  z-index: 1;
+  width: 135%; /* Original value, adjust as needed */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  top: -52px; /* Original value, adjust as needed */
+  right: -187px; /* Original value, adjust as needed */
+  max-width: 800px; /* Limit max size */
 }
 
 .slide-one, .slide-two, .slide-three {
-    position: absolute; 
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    opacity: 0; 
-    pointer-events: none;
-    z-index: 1;
-    transition: opacity 0.5s ease;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  pointer-events: none;
+  z-index: 1;
+  transition: opacity 0.5s ease;
 }
 
 .slide-one.fade-in {
-    opacity: 1;
-    pointer-events: auto;
-    z-index: 2;
+  opacity: 1;
+  pointer-events: auto;
+  z-index: 2;
 }
 
 .fade-out {
-    opacity: 0;
-    pointer-events: none;
-    z-index: 1;
+  opacity: 0;
+  pointer-events: none;
+  z-index: 1;
 }
 
 .fade-in {
-    opacity: 1 !important;
-    pointer-events: auto;
-    z-index: 2;
+  opacity: 1 !important;
+  pointer-events: auto;
+  z-index: 2;
 }
 
-#about-prev, #about-next{
-    cursor: pointer;
-    transition: opacity 0.5s ease;
-    z-index: 4;
-    position: absolute;
+#about-prev, #about-next {
+  cursor: pointer;
+  transition: opacity 0.5s ease;
+  z-index: 4;
+  position: absolute;
 }
 
 #about-prev {
-    top: -339px;
-    left: 69px;
-    width: 64%;
-    /* height: 30%; */
-    display: flex;
-    align-items: center;
-    justify-content: center;
+  top: -339px; /* Original value, adjust as needed */
+  left: 69px; /* Original value, adjust as needed */
+  width: 64%; /* Original value, adjust as needed */
+  /* height: 30%; */
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 #about-next {
-    top: -346px;
-    right: -153px;
-    width: 180%;
-    /* height: 26%; */
-    display: flex;
-    align-items: center;
-    justify-content: center;
+  top: -346px; /* Original value, adjust as needed */
+  right: -153px; /* Original value, adjust as needed */
+  width: 180%; /* Original value, adjust as needed */
+  /* height: 26%; */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* ========================================================================== */
+/* Media Queries for Responsiveness */
+/* ========================================================================== */
+
+/* Tablet and smaller desktops (e.g., 1024px to 768px) */
+@media (max-width: 1024px) {
+  .bgcontain {
+    width: 90vw; /* Make it fluid */
+    max-width: 800px; /* Still limit max size */
+  }
+
+  .title {
+    top: 5%; /* Adjust top position relative to parent */
+    width: 120%; /* Scale down title image */
+  }
+
+  .left-panel {
+    top: 15%; /* Adjust top position */
+    left: -10%; /* Adjust left position */
+    width: 80%; /* Scale down */
+    transform: rotate(-3deg); /* Slightly less rotation */
+  }
+
+  .right-panel img {
+    top: 0%; /* Adjust top position */
+    right: -10%; /* Adjust right position */
+    width: 110%; /* Scale down */
+  }
+
+  .scroll-text {
+    top: 30%; /* Adjust top position */
+    right: 5%; /* Adjust right position */
+    width: 25%; /* Make text area wider */
+    height: 35%; /* Adjust height */
+    font-size: 11px; /* Slightly smaller font */
+  }
+
+  #about-prev {
+    top: -25%; /* Adjust button position */
+    left: 5%; /* Adjust button position */
+    width: 50%; /* Scale button */
+  }
+
+  #about-next {
+    top: -25%; /* Adjust button position */
+    right: 5%; /* Adjust button position */
+    width: 100%; /* Scale button */
+  }
+}
+
+/* Mobile devices (e.g., 767px and below) */
+@media (max-width: 767px) {
+  #about {
+    /* Adjust padding or alignment for smaller screens if needed */
+    padding: 1rem;
+  }
+
+  .bgcontain {
+    width: 95vw; /* Take up more width on small screens */
+    height: 90vh; /* Give it a defined height to manage content */
+    flex-direction: column; /* Stack elements vertically */
+    justify-content: flex-start; /* Align content to top */
+    overflow: hidden; /* Hide overflowing parts of the frame */
+  }
+
+  .bg-frame {
+    /* The frame might need to be scaled down or hidden if it doesn't fit well */
+    width: 150%; /* Make it larger to cover the background */
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%); /* Center the frame */
+    opacity: 0.5; /* Make it semi-transparent to prioritize content */
+  }
+
+  .title {
+    position: relative; /* Change to relative to flow with content */
+    top: auto;
+    left: auto;
+    transform: none;
+    width: 80%; /* Fluid width */
+    margin-top: 1rem; /* Add some space */
+    order: 1; /* Order it first in flex container */
+  }
+
+  .left-panel {
+    position: relative; /* Change to relative */
+    top: auto;
+    left: auto;
+    transform: none;
+    width: 60%; /* Fluid width */
+    margin-top: 1rem;
+    order: 3; /* Order it after text */
+  }
+
+  .left-panel img {
+    border-radius: 5px; /* Less rounded corners */
+  }
+
+  .right-panel {
+    /* Hide or significantly scale down the right panel image as it's large */
+    display: none; /* Hide it for mobile to simplify layout */
+  }
+
+  .scroll-text {
+    position: relative; /* Change to relative */
+    top: auto;
+    right: auto;
+    width: 90%; /* Take up most of the width */
+    height: auto; /* Let height be determined by content */
+    max-height: 40%; /* Limit max height to prevent excessive scrolling */
+    overflow-y: auto;
+    font-size: 10px; /* Smaller font size */
+    padding: 0.5rem; /* Add padding */
+    background: rgba(255, 255, 255, 0.8); /* Add a background for readability */
+    border-radius: 8px;
+    color: #333; /* Darker text for light background */
+    margin-top: 1rem;
+    order: 2; /* Order it after title */
+  }
+
+  #about-prev, #about-next {
+    position: absolute; /* Keep absolute for buttons */
+    top: 90%; /* Position at the bottom */
+    transform: translateY(-50%);
+    width: 20%; /* Smaller buttons */
+    height: auto;
+    z-index: 5; /* Ensure they are on top */
+    opacity: 1; /* Always visible */
+  }
+
+  #about-prev {
+    left: 5%;
+  }
+
+  #about-next {
+    right: 5%;
+  }
+}
+
+/* Small mobile devices (e.g., 480px and below) */
+@media (max-width: 480px) {
+  .bgcontain {
+    height: 95vh; /* More height for content */
+  }
+
+  .title {
+    width: 90%;
+  }
+
+  .left-panel {
+    width: 70%;
+  }
+
+  .scroll-text {
+    font-size: 9px;
+    max-height: 35%;
+  }
+
+  #about-prev, #about-next {
+    width: 25%;
+    top: 92%;
+  }
 }
