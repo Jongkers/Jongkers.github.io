@@ -4,554 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Pokémon GO Enhanced</title>
-  <style>
-    /* homepage.css content */
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-      font-family: 'Segoe UI', sans-serif;
-    }
-
-    body {
-      background: linear-gradient(to bottom, #0d0d0d, #1a1a1a);
-      color: #fff;
-      overflow-x: hidden;
-    }
-
-    .carousel-wrapper {
-      position: relative;
-      display: flex;
-      align-items: center;
-      height: 100vh;
-      overflow: hidden;
-    }
-
-    .carousel {
-      display: flex;
-      transition: transform 0.5s ease-in-out;
-      width: 100vw;
-      overflow: hidden;
-    }
-
-    .carousel-slide {
-      min-width: 100vw;
-      min-height: 100vh;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      flex-direction: column;
-      background: linear-gradient(to bottom right, #111, #1f1f1f);
-      padding: 2rem;
-    }
-
-    .carousel-nav {
-      background: rgba(255, 204, 0, 0.85);
-      border: none;
-      font-size: 2rem;
-      padding: 1rem;
-      cursor: pointer;
-      z-index: 10;
-      color: #000;
-      border-radius: 50%;
-      transition: background 0.3s;
-    }
-
-    .carousel-nav:hover {
-      background: #ffcc00;
-    }
-
-    .prev {
-      position: absolute;
-      left: 10px;
-    }
-
-    .next {
-      position: absolute;
-      right: 10px;
-    }
-
-    .hero {
-      position: relative;
-      width: 100%;
-      height: 100vh;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      flex-direction: column;
-      text-align: center;
-    }
-
-    .pikachu img {
-      width: 200px;
-      z-index: 2;
-      animation: float 2s ease-in-out infinite;
-    }
-
-    @keyframes float {
-      0%, 100% { transform: translateY(0); }
-      50% { transform: translateY(-10px); }
-    }
-
-    .lightning {
-      width: 4px;
-      height: 100px;
-      background: yellow;
-      animation: blink 0.4s infinite;
-      margin-top: 1rem;
-    }
-
-    @keyframes blink {
-      0%, 100% { opacity: 1; }
-      50% { opacity: 0; }
-    }
-
-    .download-links img {
-      width: 140px;
-      margin: 1rem;
-      filter: drop-shadow(0 0 10px #ffcc00);
-    }
-
-    .form {
-      background: rgba(255, 255, 255, 0.06);
-      padding: 2rem;
-      border-radius: 1rem;
-      backdrop-filter: blur(8px);
-      display: flex;
-      flex-direction: column;
-      gap: 1rem;
-      width: 300px;
-      text-align: center;
-    }
-
-    .form input,
-    .form select {
-      padding: 0.75rem;
-      border: none;
-      border-radius: 8px;
-      outline: none;
-    }
-
-    .form button {
-      background: #ffcc00;
-      border: none;
-      padding: 0.75rem;
-      border-radius: 8px;
-      font-weight: bold;
-      cursor: pointer;
-      transition: background 0.3s;
-    }
-
-    .form button:hover {
-      background: #ffe066;
-    }
-
-    .about-text {
-      max-width: 600px;
-      text-align: center;
-      font-size: 1.1rem;
-      line-height: 1.6;
-      border: 2px solid #ffcc00; 
-      box-shadow: 0 0 10px rgba(255, 204, 0, 0.5); 
-      padding: 2rem; 
-      border-radius: 1rem; 
-      background: rgba(255, 255, 255, 0.06); 
-      backdrop-filter: blur(8px);
-    }
-
-    .product-grid {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 1rem;
-      justify-content: center;
-      margin-top: 2rem;
-    }
-
-    .product-card {
-      background: #2a2a2a;
-      border: 2px solid #ffcc00;
-      border-radius: 12px;
-      padding: 2rem;
-      text-align: center;
-      width: 220px;
-      font-weight: bold;
-      box-shadow: 0 0 10px rgba(255, 204, 0, 0.3);
-      transition: transform 0.3s ease;
-    }
-
-    .product-card:hover {
-      transform: scale(1.05);
-      box-shadow: 0 0 20px rgba(255, 204, 0, 0.5);
-    }
-
-    .pokemon-section {
-      padding: 3rem 1rem;
-      background: #121212;
-      text-align: center;
-    }
-
-    #search-box {
-      width: 60%;
-      padding: 0.75rem;
-      margin: 1rem auto;
-      border-radius: 8px;
-      border: none;
-      background: #1e1e1e;
-      color: #fff;
-      outline: none;
-    }
-
-    .pokemon-carousel {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 1rem;
-      margin-top: 2rem;
-    }
-
-    .pokemon-card {
-      background: #1b1b1b;
-      padding: 1rem;
-      border: 2px solid #ffcc00;
-      border-radius: 10px;
-      width: 160px;
-      font-weight: bold;
-      transition: transform 0.3s;
-    }
-
-    .pokemon-card:hover {
-      transform: scale(1.05);
-    }
-
-    .trainer-id {
-      background: #0d0d0d;
-      padding: 2rem;
-      text-align: center;
-      border-top: 2px solid #ffcc00;
-    }
-
-    .trainer-id p {
-      margin: 0.5rem 0;
-      font-size: 1.2rem;
-    }
-
-    #home {
-      background: url('Post Malone Lights GIF by Pokémon.gif') no-repeat center center / cover;
-    }
-
-    #login {
-      background: url('Post Malone GIF by Pokémon.gif') no-repeat center center / cover;
-    }
-
-    #register {
-      background: url('Kick Bea GIF by Pokémon.gif') no-repeat center center / cover;
-    }
-
-    #about {
-      background: url('Animated GIF.gif') no-repeat center center / cover;
-    }
-
-    #products {
-      background: url('Pokemon Anime Badges GIF by Pokémon.gif') no-repeat center center / cover;
-    }
-
-    #login .form,
-    #register .form {
-      border: 2px solid #ffcc00;
-      box-shadow: 0 0 10px rgba(255, 204, 0, 0.5);
-    }
-
-    .pokemon-card img {
-      width: 100%;
-      border-radius: 8px;
-      margin-bottom: 0.5rem;
-    }
-
-    /* shopstyle.css content */
-    .shop-body {
-      font-family: 'Segoe UI', sans-serif;
-      background-color: #f9f9f9;
-      margin: 0;
-      padding: 0;
-    }
-
-    .shop-header {
-      background-color: #2a75bb;
-      padding: 1rem;
-      color: white;
-      text-align: center;
-      position: relative;
-    }
-
-    .shop-logo {
-      font-size: 1.5rem;
-      font-weight: bold;
-      text-align: center;
-    }
-
-    .header-controls {
-      position: absolute;
-      top: 1rem;
-      right: 1rem;
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
-    }
-
-    .dark-logo {
-      height: 26px;
-      width: 26px;
-    }
-
-    .switch {
-      position: relative;
-      display: inline-block;
-      width: 40px;
-      height: 20px;
-    }
-
-    .switch input {
-      opacity: 0;
-      width: 0;
-      height: 0;
-    }
-
-    .slider.small {
-      position: absolute;
-      cursor: pointer;
-      background-color: #ccc;
-      border-radius: 20px;
-      top: 0;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      transition: 0.4s;
-    }
-
-    .slider.small::before {
-      position: absolute;
-      content: "";
-      height: 14px;
-      width: 14px;
-      left: 2px;
-      bottom: 3px;
-      background-color: white;
-      transition: 0.4s;
-      border-radius: 50%;
-    }
-
-    .switch input:checked + .slider.small {
-      background-color: #ffcb05;
-    }
-
-    .switch input:checked + .slider.small::before {
-      transform: translateX(18px);
-    }
-
-    /* === Navigation === */
-    .main-nav ul {
-      list-style: none;
-      padding: 0;
-      display: flex;
-      justify-content: center;
-      gap: 1.5rem;
-      margin-top: 0.5rem;
-    }
-
-    .main-nav a {
-      color: white;
-      text-decoration: none;
-      font-weight: 500;
-    }
-
-    .main-nav a.active-tab {
-      border-bottom: 2px solid #ffcb05;
-    }
-
-    /* === Sub-Tabs and Cart Button === */
-    .sub-tabs {
-      display: flex;
-      justify-content: center;
-      gap: 1rem;
-      background: #eaeaea;
-      padding: 1rem;
-      flex-wrap: wrap;
-    }
-
-    .sub-tabs button {
-      background: white;
-      border: 1px solid #ccc;
-      border-radius: 20px;
-      padding: 10px 20px;
-      cursor: pointer;
-      font-weight: bold;
-      transition: 0.3s;
-    }
-
-    .sub-tabs button:hover {
-      background: #f4f4f4;
-    }
-
-    .cart-icon-btn {
-      background: #ffcb05;
-      border: none;
-      padding: 10px 16px;
-      border-radius: 50px;
-      font-weight: bold;
-      cursor: pointer;
-      transition: background 0.3s ease;
-      display: flex;
-      align-items: center;
-      gap: 6px;
-    }
-
-    .cart-icon-btn:hover {
-      background-color: #f2b600;
-    }
-
-    .products {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 1.5rem;
-      padding: 2rem;
-    }
-
-    .shop-product-card { /* Renamed to avoid conflict with homepage .product-card */
-      background: white;
-      border-radius: 12px;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-      padding: 1rem;
-      width: 200px;
-      text-align: center;
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
-    }
-
-    .shop-product-card:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 6px 14px rgba(0,0,0,0.15);
-    }
-
-    .shop-product-card img {
-      width: 100%;
-      height: auto;
-      margin-bottom: 1rem;
-    }
-
-    .shop-product-card button {
-      margin-top: 0.5rem;
-      background: #2a75bb;
-      color: white;
-      border: none;
-      padding: 8px 15px;
-      border-radius: 8px;
-      cursor: pointer;
-      transition: background-color 0.3s ease;
-    }
-
-    .shop-product-card button:hover {
-      background: #1d5fa3;
-    }
-
-    .category {
-      display: none;
-    }
-
-    .category.active {
-      display: block;
-      padding-left: 15px;
-    }
-
-    #cart-panel {
-      background: #fff;
-      padding: 1rem;
-      margin: 1rem auto;
-      width: 80%;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-      border-radius: 12px;
-    }
-
-    .shop-footer { /* Renamed to avoid conflict with homepage */
-      background-color: #2a75bb;
-      color: white;
-      text-align: center;
-      padding: 1rem;
-      margin-top: 2rem;
-    }
-
-    #item-modal {
-      display: none;
-      position: fixed;
-      top: 0; left: 0;
-      width: 100%; height: 100%;
-      background: rgba(0,0,0,0.5);
-      justify-content: center;
-      align-items: center;
-      z-index: 999;
-      animation: fadeIn 0.3s ease-in-out;
-    }
-
-    #item-modal .modal-content {
-      background: white;
-      padding: 2rem;
-      border-radius: 12px;
-      max-width: 400px;
-      width: 90%;
-      text-align: center;
-      position: relative;
-      transform: scale(0.9);
-      animation: scaleUp 0.3s ease-in-out forwards;
-    }
-
-    #item-modal img {
-      width: 100%;
-      transition: transform 0.3s ease-in-out;
-      margin-bottom: 1rem;
-      cursor: zoom-in;
-    }
-
-    #item-modal img:hover {
-      transform: scale(1.1);
-    }
-
-    @keyframes fadeIn {
-      from {opacity: 0;}
-      to {opacity: 1;}
-    }
-
-    @keyframes scaleUp {
-      to {transform: scale(1);}
-    }
-
-    /* Styles for the shop button */
-    .shop-button {
-      position: absolute;
-      top: 20px;
-      right: 20px;
-      background-color: #ffcc00;
-      color: #000;
-      padding: 10px 20px;
-      border: none;
-      border-radius: 5px;
-      cursor: pointer;
-      font-weight: bold;
-      z-index: 100;
-      transition: background-color 0.3s ease;
-    }
-
-    .shop-button:hover {
-      background-color: #ffe066;
-    }
-
-    /* Hide shop sections by default */
-    .shop-section {
-      display: none;
-    }
-
-    .shop-section.active {
-      display: block;
-    }
-  </style>
+  <link rel="stylesheet" href="shopstyle.css" />
 </head>
 <body>
   <button class="shop-button" onclick="toggleShop()">Go to Shop</button>
@@ -564,12 +17,12 @@
           <div class="hero">
             <div class="bg-map"></div>
             <div class="pikachu">
-              <img src="logo.png" alt="Pikachu" />
+              <img src="/image/Pokemon-GO-Logo-Free-PNG.png" alt="Pikachu" />
               <div class="lightning"></div>
             </div>
             <div class="download-links">
-              <a href="#"><img src="apol2.webp" alt="iOS Download" /></a>
-              <a href="#"><img src="gogil.webp" alt="Android Download" /></a>
+              <a href="#"><img src="/image/apol2.webp" alt="iOS Download" /></a>
+              <a href="#"><img src="/image/gogil.webp" alt="Android Download" /></a>
             </div>
           </div>
         </section>
@@ -604,11 +57,84 @@
         </section>
 
         <section class="carousel-slide" id="about">
-          <div class="about-text">
-            <h2>About Pokémon GO</h2>
-            <p>Explore the world with Pokémon! Catch, battle, and train in real-life locations.</p>
-            <p>Join millions of Trainers today!</p>
-          </div>
+          <div class="bgcontain">
+
+            <div class="title">
+            <img src="https://createkko.github.io/FINALS/Elements/title%20small.png" alt="Behind the Screen Title">
+            </div>
+
+
+            <div id="about-prev">
+            <img src="https://createkko.github.io/FINALS/Elements/prev.png" alt="prev button">
+            </div>
+
+            <div id="about-next">
+            <img src="https://createkko.github.io/FINALS/Elements/next.png" alt="next button">
+            </div>
+
+            <div class="slide-one">
+            <div class="left-panel">
+                <img src="https://createkko.github.io/FINALS/Elements/pokelogo.png" alt="Profile Image">
+            </div>
+            <div class="right-panel">
+                <img src="https://createkko.github.io/FINALS/Elements/titel right.png" alt="title Image">
+                <div class="scroll-text">
+                <p>
+                    For over 25 years, The Pokémon Company International (TPCi) has been devoted to creating moments of joy, 
+                    connection, and discovery for fans across the globe. Our mission is to delight through meaningful experiences that 
+                    inspire friendly competition and shared journeys. 
+
+                    Pokémon has grown into a cultural phenomenon that transcends age, borders, and language. 
+                    We unite Trainers of all kinds through a world filled with incredible creatures and endless adventure. 
+                    At TPCi, we believe in the power of play to bring people together and make the world a better, more connected place.
+                </p>
+                </div>
+            </div>
+            </div>
+
+            <div class="slide-two">
+            <div class="left-panel">
+                <img src="https://createkko.github.io/FINALS/Elements/pokeball.png" alt="Profile Image">
+            </div>
+            <div class="right-panel">
+                <img src="https://createkko.github.io/FINALS/Elements/Goal.png" alt="title Image">
+                <div class="scroll-text">
+                <p>
+                    Our passion for Pokémon goes beyond games and characters. 
+                    It drives a meaningful understanding of the impact we create for teammates, fans, players, and entire communities. 
+                    We're deeply committed to supporting people both within and beyond our organization, through impactful philanthropy, 
+                    inclusive benefits, and strong diversity, equity, and inclusion practices rooted in our culture. 
+
+                    Through our Corporate Social Responsibility initiatives, we strive to bring the magic of Pokémon to life for children and 
+                    families across the globe. Whether it's partnering with equity-driven organizations or creating 
+                    joyful experiences for young Trainers, our mission is clear: to make a lasting, positive difference in the lives we touch.
+                </p>
+                </div>
+            </div>
+            </div>
+
+            <div class="slide-three">
+            <div class="left-panel">
+                <img src="https://createkko.github.io/FINALS/Elements/devlogo.png" alt="Profile Image">
+            </div>
+            <div class="right-panel">
+                <img src="https://createkko.github.io/FINALS/Elements/devs.png" alt="title Image">
+                <div class="scroll-text">
+                <p>
+                    Javin Mayawin, Erika Gualberto, Philip Malayao, and Aiko Tabako, members of the FUntrix, are four student-developers from 
+                    FEU Tech, combining technical expertise with creative energy to support the world of Pokémon GO. 
+                    Fueled by a shared love for innovation and gameplay, this dynamic team is committed to enhancing user experience, 
+                    optimizing community engagement, and contributing fresh ideas to the evolving Pokémon GO universe. 
+                    
+                    Whether it's through smart design, intuitive features, or real-world integrations, 
+                    their mission is to help Trainers everywhere discover new adventures and build meaningful connections one tap at a time.
+                </p>
+                </div>
+            </div>
+            </div>
+
+            <img src="https://createkko.github.io/FINALS/Elements/bg_about.png" alt="Frame" class="bg-frame">
+        </div>
         </section>
 
         <section class="carousel-slide" id="products">
@@ -648,7 +174,7 @@
       </nav>
     </header>
 
-    <div id="cart-panel" style="display:none; background:#fff; padding:1rem; margin:1rem auto; width:80%; box-shadow:0 4px 10px rgba(0,0,0,0.1); border-radius:12px;">
+    <div id="cart-panel" style="display:none; background:#fff; padding:2rem; margin:1rem auto; width:80%; box-shadow:0 4px 10px rgba(0,0,0,0.1); border-radius:12px;">
       <h3>Your Cart</h3>
       <ul id="cart-items"></ul>
       <p><strong>Total:</strong> ₱<span id="cart-total">0.00</span></p>
@@ -665,7 +191,6 @@
 
     <main>
       <section id="coins" class="category active">
-        <h2>PokéCoins</h2>
         <div class="products">
           <div class="shop-product-card" onclick="showDetails(this)">
             <img src="/image/PokeCoin.jpg" alt="250 Coins">
@@ -707,7 +232,6 @@
       </section>
 
       <section id="bundles" class="category">
-        <h2>Bundles</h2>
         <div class="products">
           <div class="shop-product-card" onclick="showDetails(this)">
             <img src="/image/Mystery.jpg" alt="Bundle 1">
@@ -719,7 +243,6 @@
       </section>
 
       <section id="tickets" class="category">
-        <h2>Tickets</h2>
         <div class="products">
           <div class="shop-product-card" onclick="showDetails(this)">
             <img src="/image/ticket.png" alt="Ticket">
@@ -743,7 +266,6 @@
       </section>
 
       <section id="items" class="category">
-        <h2>Items</h2>
         <div class="products">
           <div class="shop-product-card" onclick="showDetails(this)">
             <img src="/image/lucky.jpg" alt="Item">
@@ -830,231 +352,6 @@
     </footer>
   </div>
 
-  <script>
-    let cart = [];
-
-function showCategory(id) {
-  document.querySelectorAll('.category').forEach(cat => {
-    cat.classList.remove('active');
-  });
-  document.getElementById(id).classList.add('active');
-}
-
-function addToCart(name, price) {
-  const existing = cart.find(item => item.name === name);
-  if (existing) {
-    existing.quantity += 1;
-  } else {
-    cart.push({ name, price, quantity: 1 });
-  }
-  updateCartDisplay();
-}
-
-function updateCartDisplay() {
-  const cartCount = cart.reduce((sum, item) => sum + item.quantity, 0);
-  const total = cart.reduce((sum, item) => sum + item.price * item.quantity, 0);
-
-  document.getElementById('cart-count').textContent = cartCount;
-  document.getElementById('cart-total').textContent = total.toFixed(2);
-
-  const cartItems = document.getElementById('cart-items');
-  cartItems.innerHTML = '';
-  cart.forEach(item => {
-    const li = document.createElement('li');
-    li.textContent = `${item.name} x${item.quantity} - ₱${(item.price * item.quantity).toFixed(2)}`;
-    cartItems.appendChild(li);
-  });
-}
-
-function toggleCart() {
-  const panel = document.getElementById('cart-panel');
-  if (panel.style.display === 'none' || panel.style.display === '') {
-    panel.style.display = 'block';
-    panel.style.animation = 'slideDown 0.3s ease-out';
-  } else {
-    panel.style.animation = 'fadeOut 0.2s ease-in-out';
-    setTimeout(() => {
-      panel.style.display = 'none';
-    }, 200);
-  }
-}
-
-function checkout() {
-  if (cart.length === 0) {
-    alert("Your cart is empty!");
-    return;
-  }
-  alert("Checkout complete! Thank you for your purchase.");
-  cart = [];
-  updateCartDisplay();
-  document.getElementById('cart-panel').style.display = 'none';
-}
-
-const itemDescriptions = {
-  "250 PokéCoins": "Use 250 PokéCoins to buy premium items like Poké Balls, Incense, and more.",
-  "600 PokéCoins": "A medium amount of PokéCoins to give you an advantage in your journey.",
-  "1,300 PokéCoins": "Enough PokéCoins for multiple upgrades or item purchases.",
-  "2,700 PokéCoins": "A large amount of PokéCoins to fully equip your Pokémon GO experience.",
-  "5,600 PokéCoins": "A substantial amount of PokéCoins to ensure you have everything you need.",
-  "15,500 PokéCoins": "A extreme large amount of PokéCoins to get you started on your Pokémon journey.",
-  "Starter Bundle": "Includes: 10 Poké Balls, 2 Lucky Eggs, 2 Incense, and 1 Remote Raid Pass.",
-  "Quaxly Community Day Ultra Ticket": "Includes: 5 Ultra Balls and 1 Ticket.",
-  "Water Festival Ultra Ticket": "Includes: 1 Star Piece and 1 Ticket.",
-  "G-MAX Lapras Max Battle Day Ultra Ticket": "Includes: 1 Max Particle Pack and 1 Ticket.",
-  "Lucky Egg Pack": "Includes 8 Lucky Eggs to double your XP gain for 30 minutes.",
-  "Star Piece": "Includes 8 Star Pieces to boost your XP gain for 30 minutes.",
-  "Remote Raid Pass": "Allows you to join raids remotely, no need to be at the location. Includes 2 Remote Raid Pass.",
-  "Pokemon Storage": "Increases your Pokémon storage by 100 slots, allowing you to catch and store more Pokémon.",
-  "Item Bag": "Increases your item bag capacity by 50 slots, so you can carry more items.",
-  "Egg Incubator": "A reusable incubator that allows you to hatch eggs without consuming a charge. Includes 3 Egg Incubator.",
-  "Super Egg Incubator": "A special incubator that hatches eggs faster than a regular incubator. Includes 2 Super Egg Incubator.",
-  "Max Revive": "Restores the HP of a Pokémon to full, including status conditions. Includes 6 Max Revive.",
-  "Premium Battle Pass": "A special pass that allows you to join premium raids with exclusive rewards. Includes 3 Premium Battle Pass.",
-  "Max Particle Pack": "A pack that includes 5 Max Particles to enhance your Pokémon's abilities in battles. Includes 6 Max Particle.",
-  "Max Mushroom": "A pack that includes 5 Max Mushrooms to enhance your Pokémon's abilities in battles. Includes 3 Max Mushroom.",
-};
-
-function showDetails(card) {
-  const title = card.querySelector('h3').innerText;
-  const image = card.querySelector('img').src;
-  const price = card.querySelector('p').innerText;
-  const description = itemDescriptions[title] || 'This item includes exclusive bonuses to enhance your Pokémon GO experience.';
-
-  document.getElementById('modal-title').innerText = title;
-  document.getElementById('modal-image').src = image;
-  document.getElementById('modal-price').innerText = price;
-  document.getElementById('modal-description').innerText = description;
-
-  document.getElementById('item-modal').style.display = 'flex';
-}
-
-function closeModal() {
-  document.getElementById('item-modal').style.display = 'none';
-}
-
-const famousPokemon = [
-  { name: "Pikachu", gen: 1, img: "images/Pokemon_Pikachu_art.png" },
-  { name: "Charizard", gen: 1, img: "charizard.png" },
-  { name: "Lucario", gen: 4, img: "lucario.png" },
-  { name: "Greninja", gen: 6, img: "greninja.png" },
-  { name: "Garchomp", gen: 4, img: "garchomp.png" },
-  { name: "Gardevoir", gen: 3, img: "gardevoir.png" }
-];
-
-const pokemonContainer = document.getElementById("pokemon-carousel");
-const searchBox = document.getElementById("search-box");
-
-function renderPokemonList(list) {
-  pokemonContainer.innerHTML = "";
-  list.forEach(p => {
-    const card = document.createElement("div");
-    card.className = "pokemon-card";
-    const img = document.createElement("img");
-    img.src = p.img;
-    img.alt = p.name;
-    const name = document.createElement("p");
-    name.textContent = `${p.name} (Gen ${p.gen})`;
-    card.appendChild(img);
-    card.appendChild(name);
-    pokemonContainer.appendChild(card);
-  });
-}
-
-if (searchBox) {
-  searchBox.addEventListener("input", () => {
-    const query = searchBox.value.toLowerCase();
-    const filtered = famousPokemon.filter(p => p.name.toLowerCase().includes(query));
-    renderPokemonList(filtered);
-  });
-}
-
-renderPokemonList(famousPokemon);
-
-const carousel = document.getElementById("carousel");
-const slides = document.querySelectorAll(".carousel-slide");
-const nextBtn = document.querySelector(".carousel-nav.next");
-const prevBtn = document.querySelector(".carousel-nav.prev");
-let index = 0;
-
-function updateCarousel() {
-  if (carousel) {
-    carousel.scrollTo({ left: index * window.innerWidth, behavior: 'smooth' });
-  }
-}
-
-if (nextBtn) {
-  nextBtn.addEventListener("click", () => {
-    index = (index + 1) % slides.length;
-    updateCarousel();
-  });
-}
-
-if (prevBtn) {
-  prevBtn.addEventListener("click", () => {
-    index = (index - 1 + slides.length) % slides.length;
-    updateCarousel();
-  });
-}
-
-const loginForm = document.getElementById("login-form");
-if (loginForm) {
-  loginForm.addEventListener("submit", (e) => {
-    e.preventDefault();
-    const name = document.getElementById("username").value;
-    const trainerData = {
-      name: name,
-      level: Math.floor(Math.random() * 40) + 1,
-      team: ["Mystic", "Valor", "Instinct"][Math.floor(Math.random() * 3)],
-      coins: Math.floor(Math.random() * 5000)
-    };
-
-    document.getElementById("trainer-name").textContent = `Name: ${trainerData.name}`;
-    document.getElementById("trainer-level").textContent = `Level: ${trainerData.level}`;
-    document.getElementById("trainer-team").textContent = `Team: ${trainerData.team}`;
-    document.getElementById("trainer-coins").textContent = `PokéCoins: ${trainerData.coins}`;
-
-    index = 0;
-    updateCarousel();
-  });
-}
-
-const goRegister = document.getElementById("go-register");
-if (goRegister) {
-  goRegister.addEventListener("click", (e) => {
-    e.preventDefault();
-    index = 2; // 0=home, 1=login, 2=register
-    updateCarousel();
-  });
-}
-
-const goLogin = document.getElementById("go-login");
-if (goLogin) {
-  goLogin.addEventListener("click", (e) => {
-    e.preventDefault();
-    index = 1; // 0=home, 1=login
-    updateCarousel();
-  });
-}
-
-// Function to toggle between homepage and shop
-function toggleShop() {
-  const homepage = document.getElementById('homepage-content');
-  const shop = document.getElementById('shop-content');
-  const shopButton = document.querySelector('.shop-button');
-
-  if (homepage.style.display !== 'none') {
-    homepage.style.display = 'none';
-    shop.style.display = 'block';
-    shop.classList.add('active');
-    shopButton.textContent = 'Go to Homepage';
-  } else {
-    homepage.style.display = 'block';
-    shop.style.display = 'none';
-    shop.classList.remove('active');
-    shopButton.textContent = 'Go to Shop';
-  }
-}
-
-  </script>
+  <script src="jsscript.js"></script>
 </body>
 </html>

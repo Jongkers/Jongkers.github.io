@@ -1,3 +1,4 @@
+let cart = [];
 
 function showCategory(id) {
   document.querySelectorAll('.category').forEach(cat => {
@@ -5,8 +6,6 @@ function showCategory(id) {
   });
   document.getElementById(id).classList.add('active');
 }
-
-let cart = [];
 
 function addToCart(name, price) {
   const existing = cart.find(item => item.name === name);
@@ -47,7 +46,6 @@ function toggleCart() {
   }
 }
 
-
 function checkout() {
   if (cart.length === 0) {
     alert("Your cart is empty!");
@@ -58,7 +56,6 @@ function checkout() {
   updateCartDisplay();
   document.getElementById('cart-panel').style.display = 'none';
 }
-
 
 const itemDescriptions = {
   "250 PokéCoins": "Use 250 PokéCoins to buy premium items like Poké Balls, Incense, and more.",
@@ -102,95 +99,207 @@ function closeModal() {
   document.getElementById('item-modal').style.display = 'none';
 }
 
+const famousPokemon = [
+  { name: "Pikachu", gen: 1, img: "images/Pokemon_Pikachu_art.png" },
+  { name: "Charizard", gen: 1, img: "charizard.png" },
+  { name: "Lucario", gen: 4, img: "lucario.png" },
+  { name: "Greninja", gen: 6, img: "greninja.png" },
+  { name: "Garchomp", gen: 4, img: "garchomp.png" },
+  { name: "Gardevoir", gen: 3, img: "gardevoir.png" }
+];
 
-function closeModal() {
-  document.getElementById('item-modal').style.display = 'none';
+const pokemonContainer = document.getElementById("pokemon-carousel");
+const searchBox = document.getElementById("search-box");
+
+function renderPokemonList(list) {
+  pokemonContainer.innerHTML = "";
+  list.forEach(p => {
+    const card = document.createElement("div");
+    card.className = "pokemon-card";
+    const img = document.createElement("img");
+    img.src = p.img;
+    img.alt = p.name;
+    const name = document.createElement("p");
+    name.textContent = `${p.name} (Gen ${p.gen})`;
+    card.appendChild(img);
+    card.appendChild(name);
+    pokemonContainer.appendChild(card);
+  });
 }
 
-const famousPokemon = [
-      { name: "Pikachu", gen: 1, img: "images/Pokemon_Pikachu_art.png" },
-      { name: "Charizard", gen: 1, img: "charizard.png" },
-      { name: "Lucario", gen: 4, img: "lucario.png" },
-      { name: "Greninja", gen: 6, img: "greninja.png" },
-      { name: "Garchomp", gen: 4, img: "garchomp.png" },
-      { name: "Gardevoir", gen: 3, img: "gardevoir.png" }
+if (searchBox) {
+  searchBox.addEventListener("input", () => {
+    const query = searchBox.value.toLowerCase();
+    const filtered = famousPokemon.filter(p => p.name.toLowerCase().includes(query));
+    renderPokemonList(filtered);
+  });
+}
+
+renderPokemonList(famousPokemon);
+
+const carousel = document.getElementById("carousel");
+const slides = document.querySelectorAll(".carousel-slide");
+const nextBtn = document.querySelector(".carousel-nav.next");
+const prevBtn = document.querySelector(".carousel-nav.prev");
+let index = 0;
+
+function updateCarousel() {
+  if (carousel) {
+    carousel.scrollTo({ left: index * window.innerWidth, behavior: 'smooth' });
+  }
+}
+
+if (nextBtn) {
+  nextBtn.addEventListener("click", () => {
+    index = (index + 1) % slides.length;
+    updateCarousel();
+  });
+}
+
+if (prevBtn) {
+  prevBtn.addEventListener("click", () => {
+    index = (index - 1 + slides.length) % slides.length;
+    updateCarousel();
+  });
+}
+
+const loginForm = document.getElementById("login-form");
+if (loginForm) {
+  loginForm.addEventListener("submit", (e) => {
+    e.preventDefault();
+    const name = document.getElementById("username").value;
+    const trainerData = {
+      name: name,
+      level: Math.floor(Math.random() * 40) + 1,
+      team: ["Mystic", "Valor", "Instinct"][Math.floor(Math.random() * 3)],
+      coins: Math.floor(Math.random() * 5000)
+    };
+
+    document.getElementById("trainer-name").textContent = `Name: ${trainerData.name}`;
+    document.getElementById("trainer-level").textContent = `Level: ${trainerData.level}`;
+    document.getElementById("trainer-team").textContent = `Team: ${trainerData.team}`;
+    document.getElementById("trainer-coins").textContent = `PokéCoins: ${trainerData.coins}`;
+
+    index = 0;
+    updateCarousel();
+  });
+}
+
+const goRegister = document.getElementById("go-register");
+if (goRegister) {
+  goRegister.addEventListener("click", (e) => {
+    e.preventDefault();
+    index = 2;
+    updateCarousel();
+  });
+}
+
+const goLogin = document.getElementById("go-login");
+if (goLogin) {
+  goLogin.addEventListener("click", (e) => {
+    e.preventDefault();
+    index = 1; 
+    updateCarousel();
+  });
+}
+
+function toggleShop() {
+  const homepage = document.getElementById('homepage-content');
+  const shop = document.getElementById('shop-content');
+  const shopButton = document.querySelector('.shop-button');
+
+  if (homepage.style.display !== 'none') {
+    homepage.style.display = 'none';
+    shop.style.display = 'block';
+    shop.classList.add('active');
+    shopButton.textContent = 'Go to Homepage';
+  } else {
+    homepage.style.display = 'block';
+    shop.style.display = 'none';
+    shop.classList.remove('active');
+    shopButton.textContent = 'Go to Shop';
+  }
+}
+
+
+document.addEventListener("DOMContentLoaded", function () {
+  const slides = [
+    document.querySelector(".slide-one"),
+    document.querySelector(".slide-two"),
+    document.querySelector(".slide-three"),
+  ];
+
+  let currentSlide = 0;
+
+  const showSlide = (idx) => {
+    slides.forEach((slide, i) => {
+      if (i === idx) {
+        slide.classList.add("fade-in");
+        slide.classList.remove("fade-out");
+      } else {
+        slide.classList.remove("fade-in");
+        slide.classList.add("fade-out");
+      }
+    });
+  };
+
+  const nextButton = document.querySelector(".next");
+  if (nextButton) {
+    nextButton.addEventListener("click", () => {
+      currentSlide = (currentSlide + 1) % slides.length;
+      showSlide(currentSlide);
+    });
+  }
+
+  const prevButton = document.querySelector(".prev");
+  if (prevButton) {
+    prevButton.addEventListener("click", () => {
+      currentSlide = (currentSlide - 1 + slides.length) % slides.length;
+      showSlide(currentSlide);
+    });
+  }
+
+
+  if (slides.length > 0) {
+    showSlide(currentSlide);
+  }
+});
+
+document.addEventListener("DOMContentLoaded", function () {
+    const aboutSlides = [
+      document.querySelector(".slide-one"),
+      document.querySelector(".slide-two"),
+      document.querySelector(".slide-three"),
     ];
 
-    const container = document.getElementById("pokemon-carousel");
-    const searchBox = document.getElementById("search-box");
+    let aboutIndex = 0;
 
-    function renderPokemonList(list) {
-      container.innerHTML = "";
-      list.forEach(p => {
-        const card = document.createElement("div");
-        card.className = "pokemon-card";
-        const img = document.createElement("img");
-        img.src = p.img;
-        img.alt = p.name;
-        const name = document.createElement("p");
-        name.textContent = `${p.name} (Gen ${p.gen})`;
-        card.appendChild(img);
-        card.appendChild(name);
-        container.appendChild(card);
+    function showAboutSlide(index) {
+      aboutSlides.forEach((slide, i) => {
+        if (i === index) {
+          slide.classList.add("fade-in");
+          slide.classList.remove("fade-out");
+        } else {
+          slide.classList.remove("fade-in");
+          slide.classList.add("fade-out");
+        }
       });
     }
 
-    searchBox.addEventListener("input", () => {
-      const query = searchBox.value.toLowerCase();
-      const filtered = famousPokemon.filter(p => p.name.toLowerCase().includes(query));
-      renderPokemonList(filtered);
-    });
+    const aboutNext = document.getElementById("about-next");
+    const aboutPrev = document.getElementById("about-prev");
 
-    renderPokemonList(famousPokemon);
+    if (aboutNext && aboutPrev) {
+      aboutNext.addEventListener("click", () => {
+        aboutIndex = (aboutIndex + 1) % aboutSlides.length;
+        showAboutSlide(aboutIndex);
+      });
 
-    const carousel = document.getElementById("carousel");
-    const slides = document.querySelectorAll(".carousel-slide");
-    const nextBtn = document.querySelector(".carousel-nav.next");
-    const prevBtn = document.querySelector(".carousel-nav.prev");
-    let index = 0;
-
-    function updateCarousel() {
-      carousel.scrollTo({ left: index * window.innerWidth, behavior: 'smooth' });
+      aboutPrev.addEventListener("click", () => {
+        aboutIndex = (aboutIndex - 1) % aboutSlides.length;
+        showAboutSlide(aboutIndex);
+      });
     }
 
-    nextBtn.addEventListener("click", () => {
-      index = (index + 1) % slides.length;
-      updateCarousel();
-    });
-
-    prevBtn.addEventListener("click", () => {
-      index = (index - 1 + slides.length) % slides.length;
-      updateCarousel();
-    });
-
-    const loginForm = document.getElementById("login-form");
-    loginForm.addEventListener("submit", (e) => {
-      e.preventDefault();
-      const name = document.getElementById("username").value;
-      const trainerData = {
-        name: name,
-        level: Math.floor(Math.random() * 40) + 1,
-        team: ["Mystic", "Valor", "Instinct"][Math.floor(Math.random() * 3)],
-        coins: Math.floor(Math.random() * 5000)
-      };
-
-      document.getElementById("trainer-name").textContent = `Name: ${trainerData.name}`;
-      document.getElementById("trainer-level").textContent = `Level: ${trainerData.level}`;
-      document.getElementById("trainer-team").textContent = `Team: ${trainerData.team}`;
-      document.getElementById("trainer-coins").textContent = `PokéCoins: ${trainerData.coins}`;
-
-      index = 0;
-      updateCarousel();
-    });
-
-    document.getElementById("go-register").addEventListener("click", (e) => {
-      e.preventDefault();
-      index = 2;
-      updateCarousel();
-    });
-
-    document.getElementById("go-login").addEventListener("click", (e) => {
-      e.preventDefault();
-      index = 1;
-      updateCarousel();
-    });
+    showAboutSlide(aboutIndex);
+  });
