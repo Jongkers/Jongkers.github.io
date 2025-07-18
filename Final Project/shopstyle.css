@@ -573,9 +573,9 @@ body {
 }
 
 .title {
-      position: absolute;
+    position: absolute;
     z-index: 2;
-    top: 78px;
+    /*top: 78px;*/
     /* right: 15px; */
     /* left: 50%; */
     transform: translateX(-18%);
@@ -588,7 +588,7 @@ body {
 
 .left-panel {
     position: absolute;
-    top: 387px;
+    top: 174px;
     left: -170px;
     width: 93%;
     display: flex;
@@ -607,7 +607,7 @@ body {
 
 .scroll-text {
     position: absolute;
-    top: 541px;
+    top: 351px;
     right: 13px;
     width: 20%;
     height: 28%;
@@ -624,7 +624,7 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
-    top: 141px;
+    top: -52px;
     right: -187px;
 }
 
@@ -666,7 +666,7 @@ body {
 }
 
 #about-prev {
-    top: -138px;
+    top: -339px;
     left: 69px;
     width: 64%;
     /* height: 30%; */
@@ -676,7 +676,7 @@ body {
 }
 
 #about-next {
-    top: -149px;
+    top: -346px;
     right: -153px;
     width: 180%;
     /* height: 26%; */
