@@ -280,6 +280,21 @@ body {
   text-align: center;
 }
 
+#shop-content {
+          display: none; /* Keep this */
+          color: black; /* Keep this */
+          min-height: 100vh; /* Add this line */
+          display: flex; /* Add this for flexbox layout */
+          flex-direction: column; /* Stack children vertically */
+        }
+#shop-content.active {
+          display: flex; /* Change from block to flex */
+          background-color: #f9f9f9;
+        }
+        /* You might need to adjust the main content area to take up remaining space */
+        #shop-content main { /* The <main> tag inside #shop-content */
+            flex-grow: 1; /* Allow it to grow and fill available space */
+
 .header-controls {
   position: absolute;
   top: 1rem;
