@@ -717,9 +717,8 @@ body {
     height: auto;
     padding: 2rem 1rem;
     flex-direction: column;
-  }
 
-  .bg-frame {
+    .bg-frame {
     width: 100%;
     height: auto;
   }
@@ -807,4 +806,4 @@ body {
   .bg-frame {
     width: 100%;
   }
-  }
+}
