@@ -713,7 +713,7 @@ body {
 
 @media (max-width: 1024px) {
   .bgcontain {
-    width: 90%;
+    width: 80%;
     height: auto;
     padding: 1rem;
   }
@@ -727,14 +727,14 @@ body {
 
   .right-panel img {
     position: static;
-    width: 90%;
+    width: 80%;
     transform: none;
     margin-bottom: 1rem;
   }
 
   .scroll-text {
     position: static;
-    width: 90%;
+    width: 80%;
     height: auto;
     font-size: 14px;
     padding: 1rem;
@@ -743,18 +743,18 @@ body {
   .title {
     position: static;
     transform: none;
-    width: 100%;
+    width: 80%;
     margin-bottom: 1rem;
   }
 
   .title img {
-    width: 100%;
+    width: 80%;
   }
 
   #about-prev, #about-next {
     position: static;
     transform: none;
-    width: 100%;
+    width: 80%;
     justify-content: space-between;
     display: flex;
     margin-top: 1rem;
@@ -764,7 +764,7 @@ body {
 /* Mobile screens (≤ 767px) */
 @media (max-width: 767px) {
   .bgcontain {
-    width: 95%;
+    width: 90%;
     flex-direction: column;
     padding: 1rem;
   }
@@ -772,14 +772,14 @@ body {
   .left-panel,
   .right-panel {
     position: static;
-    width: 100%;
+    width: 80%;
     transform: none;
     margin: 0 auto 1rem;
   }
 
   .scroll-text {
     position: static;
-    width: 100%;
+    width: 80%;
     height: auto;
     font-size: 13px;
     padding: 1rem;
@@ -787,25 +787,25 @@ body {
 
   .right-panel img,
   .left-panel img {
-    width: 100%;
+    width: 80%;
     height: auto;
   }
 
   .title {
     position: static;
     transform: none;
-    width: 100%;
+    width: 80%;
     margin-bottom: 1rem;
   }
 
   .title img {
-    width: 100%;
+    width: 80%;
   }
 
   #about-prev, #about-next {
     position: static;
     display: flex;
-    width: 100%;
+    width: 80%;
     justify-content: space-between;
     margin-top: 1rem;
   }
