@@ -713,18 +713,37 @@ body {
 
 @media (max-width: 1024px) {
   .bgcontain {
-    width: 95%;
+    width: 90%;
     height: auto;
-    padding: 2rem 1rem;
+    padding: 1rem;
   }
 
-  .bg-frame {
-    width: 100%;
+  .left-panel {
+    position: static;
+    width: 60%;
+    transform: none;
+    margin-bottom: 1rem;
+  }
+
+  .right-panel img {
+    position: static;
+    width: 90%;
+    transform: none;
+    margin-bottom: 1rem;
+  }
+
+  .scroll-text {
+    position: static;
+    width: 90%;
+    height: auto;
+    font-size: 14px;
+    padding: 1rem;
   }
 
   .title {
     position: static;
     transform: none;
+    width: 100%;
     margin-bottom: 1rem;
   }
 
@@ -732,48 +751,62 @@ body {
     width: 100%;
   }
 
-  .left-panel,
-  .right-panel {
+  #about-prev, #about-next {
     position: static;
     transform: none;
     width: 100%;
+    justify-content: space-between;
     display: flex;
-    justify-content: center;
-    margin: 1rem 0;
+    margin-top: 1rem;
+  }
+}
+
+/* Mobile screens (≤ 767px) */
+@media (max-width: 767px) {
+  .bgcontain {
+    width: 95%;
+    flex-direction: column;
+    padding: 1rem;
   }
 
-  .left-panel img,
-  .right-panel img {
-    width: 70%;
+  .left-panel,
+  .right-panel {
+    position: static;
+    width: 100%;
+    transform: none;
+    margin: 0 auto 1rem;
   }
 
   .scroll-text {
     position: static;
     width: 100%;
     height: auto;
+    font-size: 13px;
     padding: 1rem;
-    font-size: 14px;
-    color: #000;
-    background: rgba(255, 255, 255, 0.9);
-    border-radius: 10px;
   }
 
-  #about-prev,
-  #about-next {
+  .right-panel img,
+  .left-panel img {
+    width: 100%;
+    height: auto;
+  }
+
+  .title {
     position: static;
-    width: auto;
-    margin: 1rem;
-  }
-}
-
-@media (max-width: 600px) {
-  .left-panel img,
-  .right-panel img {
-    width: 90%;
+    transform: none;
+    width: 100%;
+    margin-bottom: 1rem;
   }
 
-  .scroll-text {
-    font-size: 12px;
-    padding: 0.75rem;
+  .title img {
+    width: 100%;
+  }
+
+  #about-prev, #about-next {
+    position: static;
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    margin-top: 1rem;
   }
 }
