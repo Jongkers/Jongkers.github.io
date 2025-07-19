@@ -612,7 +612,7 @@ body {
 .title img {
   pointer-events: none;
   width: 149%;
-  margin-top: -7rem;
+  margin-top: -4rem;
 }
 
 .left-panel {
@@ -632,7 +632,7 @@ body {
   width: 100%;
   height: auto;
   border-radius: 10px;
-  margin-top: -6rem;
+  margin-top: -1rem;
   margin-right: -4rem;
 }
 
