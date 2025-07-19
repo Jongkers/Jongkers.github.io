@@ -720,85 +720,96 @@ body {
   }
 
   .title {
-    top: 13rem;
+    top: 23rem;
     font-size: 1.5rem;
   }
 
   .left-panel {
-    top: 28rem;
+    top: 39rem;
     left: -8rem;
   }
 
   .scroll-text {
-    top: 30.5rem;
-    left: 35rem;
-    width: 27.5%;
+    top: 42.8rem;
+    left: 37rem;
+    width: 30%;
     font-size: 0.70rem;
   }
 
   .right-panel img {
-    top: 11.5rem;
-    right: -7.5rem;
-    width: 120%;
-  }
-
-  #about-prev, #about-next {
-    top: -9rem;
+    top: 22rem;
+    right: -8.5rem;
+    width: 130%;
   }
 
   #about-prev {
-    left: -2rem;
+    top: 3rem;
+    left: 0.1rem;
   }
 
   #about-next {
-    right: 5rem;
+    top: 1.5rem;
+    right: 1.5rem;
   }
 }
 
-/* Phone view (portrait) */
 @media (max-width: 600px) {
   .bgcontain {
     width: 90%;
   }
 
   .title {
-    top: 14rem;
+    top: 24rem;
     font-size: 1.5rem;
     text-align: center;
   }
 
   .left-panel {
-    top: 22rem;
-    left: -6.5rem;
+    top: 31rem;
+    left: -5.5rem;
     width: 100%;
   }
 
   .scroll-text {
-    top: 21.4rem;
-    left: 20rem;
-    width: 30%;
-    font-size: 0.37rem;
+    top: 29rem;
+    left: 17.6rem;
+    width: 27.9%;
+    font-size: 0.341rem;
   }
 
   .right-panel img {
-    top: 10.5rem;
-    right: -4rem;
+    top: 19.5rem;
+    right: -3.5rem;
     width: 120%;
     margin: 0 auto;
     display: block;
   }
 
-  #about-prev,
-  #about-next {
-    top: -17.6rem;
+
+  #about-prev {
+    top: -9.5rem;
+    left: -11.5rem;
     position: absolute;
   }
 
-  #about-prev {
-    left: -10.5rem;
-  }
-
   #about-next {
-    right: 23rem;
+    top: -11.3rem;
+    right: 26.4rem;
+    position: absolute;
   }
+}
+
+.shop-button {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  background-color: #ffcc00;
+  color: #000;
+  padding: 5px 7px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: bold;
+  z-index: 100;
+  transition: background-color 0.3s ease;
 }
