@@ -585,15 +585,14 @@ body {
 
 .bgcontain {
   position: relative;
-  width: 1000px; 
-  height: auto;
+  width: 62.50rem; 
+  height: 100vh;
   display: flex; 
   justify-content: center; 
   align-items: center; 
   flex-direction: column;
   margin: 0;
   font-family: 'Segoe UI', sans-serif;
-  height: 100vh;
 }
 
 .bg-frame {
@@ -606,19 +605,20 @@ body {
 .title {
       position: absolute;
     z-index: 2;
-    top: 78px;
+    top: 4.88rem;
     transform: translateX(-18%);
 }
 
 .title img {
   pointer-events: none;
   width: 149%;
+  margin-top: -7rem;
 }
 
 .left-panel {
     position: absolute;
-    top: 387px;
-    left: -170px;
+    top: 24.19rem;
+    left: -10.62rem;
     width: 93%;
     display: flex;
     align-items: center;
@@ -632,15 +632,17 @@ body {
   width: 100%;
   height: auto;
   border-radius: 10px;
+  margin-top: -6rem;
+  margin-right: -4rem;
 }
 
 .scroll-text {
     position: absolute;
-    top: 541px;
-    right: 13px;
-    width: 20%;
+    top: 30.5rem;
+    right: -0.8rem;
+    width: 27%;
     height: 28%;
-    font-size: 12px;
+    font-size: 0.86rem;
     color: #000;
 }
 
@@ -652,8 +654,8 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
-    top: 141px;
-    right: -187px;
+    top: 5rem;
+    right: -11.69rem;
 }
 
 .slide-one, .slide-two, .slide-three {
@@ -691,11 +693,12 @@ body {
     transition: opacity 0.5s ease;
     z-index: 4;
     position: absolute;
+    margin-top: -5rem;
 }
 
 #about-prev {
-    top: -138px;
-    left: 69px;
+    top: -8.62rem;
+    left: 4.31rem;
     width: 64%;
     display: flex;
     align-items: center;
@@ -703,10 +706,99 @@ body {
 }
 
 #about-next {
-    top: -149px;
-    right: -153px;
+    top: -9.31rem;
+    right: -9.56rem;
     width: 180%;
     display: flex;
     align-items: center;
     justify-content: center;
+}
+
+@media (max-width: 1024px) {
+  .bgcontain {
+    width: 80%;
+  }
+
+  .title {
+    top: 13rem;
+    font-size: 1.5rem;
+  }
+
+  .left-panel {
+    top: 28rem;
+    left: -8rem;
+  }
+
+  .scroll-text {
+    top: 30.5rem;
+    left: 35rem;
+    width: 27.5%;
+    font-size: 0.70rem;
+  }
+
+  .right-panel img {
+    top: 11.5rem;
+    right: -7.5rem;
+    width: 120%;
+  }
+
+  #about-prev, #about-next {
+    top: -9rem;
+  }
+
+  #about-prev {
+    left: -2rem;
+  }
+
+  #about-next {
+    right: 5rem;
+  }
+}
+
+/* Phone view (portrait) */
+@media (max-width: 600px) {
+  .bgcontain {
+    width: 90%;
+  }
+
+  .title {
+    top: 14rem;
+    font-size: 1.5rem;
+    text-align: center;
+  }
+
+  .left-panel {
+    top: 22rem;
+    left: -6.5rem;
+    width: 100%;
+  }
+
+  .scroll-text {
+    top: 21.4rem;
+    left: 20rem;
+    width: 30%;
+    font-size: 0.37rem;
+  }
+
+  .right-panel img {
+    top: 10.5rem;
+    right: -4rem;
+    width: 120%;
+    margin: 0 auto;
+    display: block;
+  }
+
+  #about-prev,
+  #about-next {
+    top: -17.6rem;
+    position: absolute;
+  }
+
+  #about-prev {
+    left: -10.5rem;
+  }
+
+  #about-next {
+    right: 23rem;
+  }
 }
