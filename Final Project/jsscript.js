@@ -100,12 +100,12 @@ function closeModal() {
 }
 
 const famousPokemon = [
-  { name: "Pikachu", gen: 1, img: "images/Pokemon_Pikachu_art.png" },
-  { name: "Charizard", gen: 1, img: "charizard.png" },
-  { name: "Lucario", gen: 4, img: "lucario.png" },
-  { name: "Greninja", gen: 6, img: "greninja.png" },
-  { name: "Garchomp", gen: 4, img: "garchomp.png" },
-  { name: "Gardevoir", gen: 3, img: "gardevoir.png" }
+  { name: "Pikachu", gen: 1, img: "/image/Pokemon_Pikachu_art.png" },
+  { name: "Charizard", gen: 1, img: "/image/charizard2.png" },
+  { name: "Lucario", gen: 4, img: "/image/lucario.png" },
+  { name: "Greninja", gen: 6, img: "/image/greninja2.png" },
+  { name: "Garchomp", gen: 4, img: "/image/garch.png" },
+  { name: "Gardevoir", gen: 3, img: "/image/gardevoir2.png" }
 ];
 
 const pokemonContainer = document.getElementById("pokemon-carousel");
