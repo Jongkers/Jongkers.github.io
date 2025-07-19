@@ -720,25 +720,25 @@ body {
   }
 
   .title {
-    top: 23rem;
+    top: 21rem;
     font-size: 1.5rem;
   }
 
   .left-panel {
-    top: 39rem;
+    top: 34rem;
     left: -8rem;
   }
 
   .scroll-text {
-    top: 42.8rem;
-    left: 37rem;
+    top: 36.5rem;
+    left: 29.8rem;
     width: 30%;
-    font-size: 0.70rem;
+    font-size: 0.58rem;
   }
 
   .right-panel img {
-    top: 22rem;
-    right: -8.5rem;
+    top: 21rem;
+    right: -7.5rem;
     width: 130%;
   }
 
@@ -759,13 +759,13 @@ body {
   }
 
   .title {
-    top: 24rem;
+    top: 22rem;
     font-size: 1.5rem;
     text-align: center;
   }
 
   .left-panel {
-    top: 31rem;
+    top: 28rem;
     left: -5.5rem;
     width: 100%;
   }
